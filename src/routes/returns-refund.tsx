@@ -101,11 +101,11 @@ export const Route = createFileRoute("/returns-refund")({
   component: ReturnsRefundPage,
   head: () => ({
     meta: [
-      { title: "Return / Refund Policy | DARDGO" },
+      { title: "Return / Refund Policy | Atharva Health Solutions" },
       {
         name: "description",
         content:
-          "DARDGO return and refund policy — 30-day returns, eligibility, exchanges, EU cooling-off, and refunds.",
+          "Atharva Health Solutions return and refund policy — 30-day returns, eligibility, exchanges, EU cooling-off, and refunds.",
       },
     ],
   }),

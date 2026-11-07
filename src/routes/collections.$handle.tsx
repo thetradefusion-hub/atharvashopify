@@ -35,12 +35,12 @@ export const Route = createFileRoute("/collections/$handle")({
           params.handle === "all"
             ? "All Products"
             : (COLLECTION_PAGE_TITLES[params.handle] ?? params.handle)
-        } — DARDGO`,
+        } — Atharva Health Solutions`,
       },
       {
         name: "description",
         content:
-          "Browse DARDGO Ayurvedic-inspired herbal wellness products — oils, topicals, and daily comfort essentials with transparent labeling.",
+          "Browse Atharva Health Solutions Ayurvedic-inspired herbal wellness products — oils, topicals, and daily comfort essentials with transparent labeling.",
       },
     ],
   }),

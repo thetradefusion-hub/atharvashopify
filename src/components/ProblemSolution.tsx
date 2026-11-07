@@ -107,7 +107,7 @@ export function ProblemSolution() {
                       Our approach
                     </p>
                     <h3 className="text-base sm:text-lg font-bold font-[var(--font-display)] text-foreground leading-tight">
-                      How DARDGO helps
+                      How Atharva Health Solutions helps
                     </h3>
                   </div>
                 </div>

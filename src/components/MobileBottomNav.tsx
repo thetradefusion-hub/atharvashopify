@@ -1,4 +1,4 @@
-import { useSyncExternalStore, type ComponentProps, type ReactNode } from "react";
+import { useEffect, useState, useSyncExternalStore, type ComponentProps, type ReactNode } from "react";
 import { Link, useLocation } from "@tanstack/react-router";
 import { Home, LayoutGrid, ShoppingCart, Store, User } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
@@ -38,7 +38,11 @@ function useLocationHash() {
 export function MobileBottomNav() {
   const location = useLocation();
   const hash = useLocationHash();
+  // Avoid hydration mismatch: SSR has empty cart; client may rehydrate from localStorage.
+  const [cartReady, setCartReady] = useState(false);
+  useEffect(() => setCartReady(true), []);
   const totalItems = useCartStore((s) => s.items.reduce((sum, item) => sum + item.quantity, 0));
+  const badgeCount = cartReady ? totalItems : 0;
   const path = location.pathname;
 
   const isHome = path === "/" && hash !== "#products";
@@ -73,9 +77,9 @@ export function MobileBottomNav() {
         <NavLink isActive={isCart} to="/cart">
           <div className="relative">
             <ShoppingCart className={`w-5 h-5 ${isCart ? "stroke-[2.5]" : ""}`} />
-            {totalItems > 0 && (
+            {badgeCount > 0 && (
               <span className="absolute -top-1.5 -right-2 h-4 w-4 rounded-full bg-accent text-accent-foreground flex items-center justify-center text-[9px] font-bold">
-                {totalItems}
+                {badgeCount}
               </span>
             )}
           </div>

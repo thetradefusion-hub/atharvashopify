@@ -1,47 +1,52 @@
-import { SITE_URL } from "@/lib/compliance";
+import {
+  BRAND_ADDRESS,
+  BRAND_EMAIL,
+  BRAND_LEGAL,
+  BRAND_LOGO_PATH,
+  BRAND_NAME,
+  BRAND_PHONE_TEL,
+  BRAND_SHORT,
+  BRAND_TAGLINE,
+  SITE_URL,
+} from "@/lib/brand";
 
 const organizationJson = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "DardGo Pharma Pvt. Ltd.",
-  alternateName: "DARDGO",
+  name: BRAND_LEGAL,
+  alternateName: BRAND_SHORT,
   url: SITE_URL,
-  logo: `${SITE_URL}/dardgo.png`,
-  description:
-    "Ayurvedic-inspired herbal wellness brand offering oils, topicals, and traditional formulations for everyday comfort.",
+  logo: `${SITE_URL}${BRAND_LOGO_PATH}`,
+  description: BRAND_TAGLINE,
   address: {
     "@type": "PostalAddress",
-    streetAddress: "38/K, Mohan Marg",
-    addressLocality: "Balaghat",
-    addressRegion: "Madhya Pradesh",
-    postalCode: "481001",
-    addressCountry: "IN",
+    streetAddress: BRAND_ADDRESS.streetAddress,
+    addressLocality: BRAND_ADDRESS.locality,
+    addressRegion: BRAND_ADDRESS.region,
+    postalCode: BRAND_ADDRESS.postalCode,
+    addressCountry: BRAND_ADDRESS.country,
   },
   contactPoint: [
     {
       "@type": "ContactPoint",
-      telephone: "+91-93299-12659",
+      telephone: BRAND_PHONE_TEL,
       contactType: "customer service",
-      email: "care@dardgo.in",
+      email: BRAND_EMAIL,
       areaServed: "IN",
       availableLanguage: ["English", "Hindi"],
     },
   ],
-  sameAs: [
-    "https://facebook.com/dardgo",
-    "https://instagram.com/dardgo",
-    "https://youtube.com/@dardgo",
-  ],
+  sameAs: [SITE_URL],
 };
 
 const websiteJson = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "DARDGO",
+  name: BRAND_NAME,
   url: SITE_URL,
   publisher: {
     "@type": "Organization",
-    name: "DardGo Pharma Pvt. Ltd.",
+    name: BRAND_LEGAL,
     url: SITE_URL,
   },
 };

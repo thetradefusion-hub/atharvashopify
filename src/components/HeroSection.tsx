@@ -1,11 +1,66 @@
-import { ArrowRight } from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
+} from "@/components/ui/carousel";
+
+const HERO_SLIDES = [
+  {
+    src: "/slider1.jpeg",
+    alt: "Balbuddhi Swarn Prashan — Ayurvedic formula for healthy growth & brain development",
+  },
+  {
+    src: "/slider2.jpeg",
+    alt: "Glow Face Oil — Kumkumadi glow face oil by Atharva Health Solutions",
+  },
+  {
+    src: "/slider3.jpeg",
+    alt: "Himalayan Shilajit — stamina & vitality booster",
+  },
+] as const;
 
 export function HeroSection() {
+  const [api, setApi] = useState<CarouselApi | null>(null);
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    if (!api) return;
+    const onSelect = () => setCurrent(api.selectedScrollSnap());
+    onSelect();
+    api.on("select", onSelect);
+    api.on("reInit", onSelect);
+    return () => {
+      api.off("select", onSelect);
+      api.off("reInit", onSelect);
+    };
+  }, [api]);
+
+  useEffect(() => {
+    if (!api) return;
+    const id = window.setInterval(() => {
+      if (api.canScrollNext()) api.scrollNext();
+      else api.scrollTo(0);
+    }, 4500);
+    return () => window.clearInterval(id);
+  }, [api]);
+
+  const goTo = useCallback(
+    (index: number) => {
+      api?.scrollTo(index);
+    },
+    [api],
+  );
+
   return (
     <section className="relative isolate overflow-hidden bg-gradient-hero flex items-center">
       {/* Layered background */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-green-dark via-brand-green-dark/95 to-brand-green-dark/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-purple-deep via-brand-purple/90 to-brand-purple-deep/75" />
+        <div className="absolute -top-24 right-0 h-72 w-72 rounded-full bg-brand-orange/20 blur-[100px] pointer-events-none" />
+        <div className="absolute bottom-0 left-0 h-64 w-64 rounded-full bg-brand-teal/25 blur-[90px] pointer-events-none" />
       </div>
 
       <div className="relative mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 lg:pt-8 pb-10 sm:pb-14 lg:pb-16 w-full">
@@ -17,33 +72,81 @@ export function HeroSection() {
               <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-yellow" />
             </span>
             <span className="text-[11px] font-semibold text-white/90 tracking-wider uppercase">
-              Ayurvedic-inspired wellness
+              Atharva Health Solutions
             </span>
           </div>
 
           {/* Headline */}
           <h1 className="text-display-2 text-white mb-3 sm:mb-4 max-w-3xl">
-            Herbal comfort for <span className="text-gradient-gold">everyday life.</span>
+            Pure Ayurveda. <span className="text-gradient-gold">Trusted care.</span>
           </h1>
 
           {/* Tagline */}
           <p className="text-base sm:text-lg text-white/70 leading-relaxed max-w-xl">
-            Traditional botanicals, thoughtful formulation, and support for active routines —
-            crafted for families who value transparency.
+            Handcrafted herbal formulations for everyday health — natural, safe, and made
+            to restore balance from within.
           </p>
 
-          {/* Hero image — centered, full-size, stable */}
+          {/* Hero slider */}
           <div className="relative w-full my-6 sm:my-8 lg:my-10">
-            <img
-              src="/dardgoheaderimg.webp"
-              alt="DARDGO Ayurvedic-inspired herbal wellness products"
-              width={1920}
-              height={1280}
-              loading="eager"
-              decoding="async"
-              fetchPriority="high"
-              className="relative w-full h-auto mx-auto object-contain"
-            />
+            <Carousel
+              setApi={setApi}
+              opts={{ loop: true, align: "start" }}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-0">
+                {HERO_SLIDES.map((slide, index) => (
+                  <CarouselItem key={slide.src} className="pl-0 basis-full">
+                    <div className="overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10 shadow-card-hover bg-black/20">
+                      <img
+                        src={slide.src}
+                        alt={slide.alt}
+                        width={1920}
+                        height={800}
+                        loading={index === 0 ? "eager" : "lazy"}
+                        decoding="async"
+                        fetchPriority={index === 0 ? "high" : "auto"}
+                        className="w-full h-auto max-h-[min(58vh,560px)] object-cover object-center"
+                      />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+
+              <button
+                type="button"
+                onClick={() => api?.scrollPrev()}
+                aria-label="Previous slide"
+                className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 flex h-9 w-9 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-black/45 text-white border border-white/20 backdrop-blur-md hover:bg-black/60 transition-colors"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+              <button
+                type="button"
+                onClick={() => api?.scrollNext()}
+                aria-label="Next slide"
+                className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 flex h-9 w-9 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-black/45 text-white border border-white/20 backdrop-blur-md hover:bg-black/60 transition-colors"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
+            </Carousel>
+
+            <div className="mt-4 flex items-center justify-center gap-2">
+              {HERO_SLIDES.map((slide, index) => (
+                <button
+                  key={slide.src}
+                  type="button"
+                  aria-label={`Go to slide ${index + 1}`}
+                  aria-current={current === index}
+                  onClick={() => goTo(index)}
+                  className={`h-2 rounded-full transition-all ${
+                    current === index
+                      ? "w-7 bg-brand-yellow"
+                      : "w-2 bg-white/35 hover:bg-white/55"
+                  }`}
+                />
+              ))}
+            </div>
           </div>
 
           {/* CTAs */}
@@ -56,7 +159,7 @@ export function HeroSection() {
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
             </a>
             <a
-              href="https://wa.me/919329912659?text=Hi%2C%20I%20want%20to%20order%20DARDGO%20products"
+              href="https://wa.me/919669361290?text=Hi%2C%20I%20want%20to%20order%20Atharva%20Health%20Solutions%20products"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-7 sm:px-8 py-3.5 sm:py-4 rounded-full bg-white/8 hover:bg-white/12 border border-white/20 backdrop-blur-md font-bold text-sm text-white active:scale-[0.98] transition-all"

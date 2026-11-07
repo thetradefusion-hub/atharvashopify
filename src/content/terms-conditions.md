@@ -1,8 +1,8 @@
-<!-- Synced with https://dardgo.com/pages/terms-conditions -->
+<!-- Synced with https://www.atharvahealthsolutions.com/pages/terms-conditions -->
 
 ## Overview
 
-This website is operated by Dardgo Pharma Private Limited. Throughout the site, the terms "we", "us" and "our" refer to Dardgo Pharma Private Limited. Dardgo Pharma Private Limited offers this website, including all information, tools and Services available from this site to you, the user, conditioned upon your acceptance of all terms, conditions, policies and notices stated here.
+This website is operated by Atharva Health Solutions. Throughout the site, the terms "we", "us" and "our" refer to Atharva Health Solutions. Atharva Health Solutions offers this website, including all information, tools and Services available from this site to you, the user, conditioned upon your acceptance of all terms, conditions, policies and notices stated here.
 
 By visiting our site and/ or purchasing something from us, you engage in our "Service" and agree to be bound by the following terms and conditions ("Terms of Service", "Terms"), including those additional terms and conditions and policies referenced herein and/or available by hyperlink. These Terms of Service apply to all users of the site, including without limitation users who are browsers, vendors, customers, merchants, and/ or contributors of content.
 
@@ -114,11 +114,11 @@ You agree that from time to time we may remove the Service for indefinite period
 
 You expressly agree that your use of, or inability to use, the Service is at your sole risk. The Service and all products and Services delivered to you through the Service are (except as expressly stated by us) provided 'as is' and 'as available' for your use, without any representation, warranties or conditions of any kind, either express or implied, including all implied warranties or conditions of merchantability, merchantable quality, fitness for a particular purpose, durability, title, and non-infringement.
 
-In no case shall Dardgo Pharma Private Limited, our directors, officers, employees, affiliates, agents, contractors, interns, suppliers, Service providers or licensors be liable for any injury, loss, claim, or any direct, indirect, incidental, punitive, special, or consequential damages of any kind, including, without limitation lost profits, lost revenue, lost savings, loss of data, replacement costs, or any similar damages, whether based in contract, tort (including negligence), strict liability or otherwise, arising from your use of any of the Service or any products procured using the Service, or for any other claim related in any way to your use of the Service or any product, including, but not limited to, any errors or omissions in any content, or any loss or damage of any kind incurred as a result of the use of the Service or any content (or product) posted, transmitted, or otherwise made available via the Service, even if advised of their possibility. Because some states or jurisdictions do not allow the exclusion or the limitation of liability for consequential or incidental damages, in such states or jurisdictions, our liability shall be limited to the maximum extent permitted by law.
+In no case shall Atharva Health Solutions, our directors, officers, employees, affiliates, agents, contractors, interns, suppliers, Service providers or licensors be liable for any injury, loss, claim, or any direct, indirect, incidental, punitive, special, or consequential damages of any kind, including, without limitation lost profits, lost revenue, lost savings, loss of data, replacement costs, or any similar damages, whether based in contract, tort (including negligence), strict liability or otherwise, arising from your use of any of the Service or any products procured using the Service, or for any other claim related in any way to your use of the Service or any product, including, but not limited to, any errors or omissions in any content, or any loss or damage of any kind incurred as a result of the use of the Service or any content (or product) posted, transmitted, or otherwise made available via the Service, even if advised of their possibility. Because some states or jurisdictions do not allow the exclusion or the limitation of liability for consequential or incidental damages, in such states or jurisdictions, our liability shall be limited to the maximum extent permitted by law.
 
 ## SECTION 14 - INDEMNIFICATION
 
-You agree to indemnify, defend and hold harmless Dardgo Pharma Private Limited and our parent, subsidiaries, affiliates, partners, officers, directors, agents, contractors, licensors, Service providers, subcontractors, suppliers, interns and employees, harmless from any claim or demand, including reasonable attorneys' fees, made by any third-party due to or arising out of your breach of these Terms of Service or the documents they incorporate by reference, or your violation of any law or the rights of a third-party.
+You agree to indemnify, defend and hold harmless Atharva Health Solutions and our parent, subsidiaries, affiliates, partners, officers, directors, agents, contractors, licensors, Service providers, subcontractors, suppliers, interns and employees, harmless from any claim or demand, including reasonable attorneys' fees, made by any third-party due to or arising out of your breach of these Terms of Service or the documents they incorporate by reference, or your violation of any law or the rights of a third-party.
 
 ## SECTION 15 - SEVERABILITY
 
@@ -152,12 +152,12 @@ We reserve the right, at our sole discretion, to update, change or replace any p
 
 ## SECTION 20 - CONTACT INFORMATION
 
-Questions about the Terms of Service should be sent to us at [care@dardgo.in](mailto:care@dardgo.in).
+Questions about the Terms of Service should be sent to us at [support@atharvahealthsolutions.com](mailto:support@atharvahealthsolutions.com).
 
 Our contact information is posted below:
 
-**Address:** B No. 38/k, 33 Abdul Jabbar, Ward No. 09, Mohan Marg, Dr Khan Gali, Balaghat, Balaghat-481001, Madhya Pradesh
+**Address:** Atharva Health Solution, Dunda Seoni, Seoni, Madhya Pradesh – 480661, India
 
-**Phone:** [+91 93299 12659](tel:+919329912659)
+**Phone:** [+91 96693 61290](tel:+919669361290)
 
-DardGo Pharma, trusted worldwide since 2006 for effective Ayurvedic solutions. Honesty and commitment define our service.
+Atharva Health Solutions, trusted worldwide since 2006 for effective Ayurvedic solutions. Honesty and commitment define our service.

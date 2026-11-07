@@ -37,8 +37,8 @@ export function CustomerCareSection() {
               </div>
               <h3 className="font-semibold text-foreground mb-2">Care team</h3>
               <p className="text-sm text-muted-foreground leading-relaxed flex-1">
-                Phone <span className="text-foreground font-medium">+91 93299 12659</span> or email{" "}
-                <span className="text-foreground font-medium">care@dardgo.in</span> — 9:00 AM – 9:00
+                Phone <span className="text-foreground font-medium">+91 96693 61290</span> or email{" "}
+                <span className="text-foreground font-medium">support@atharvahealthsolutions.com</span> — 9:00 AM – 9:00
                 PM IST, all days.
               </p>
             </div>
@@ -54,7 +54,7 @@ export function CustomerCareSection() {
                 as we can during staffed hours.
               </p>
               <a
-                href="https://wa.me/919329912659?text=Hi%2C%20I%27d%20like%20help%20with%20a%20DARDGO%20order."
+                href="https://wa.me/919669361290?text=Hi%2C%20I%27d%20like%20help%20with%20an%20Atharva%20order."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center rounded-xl bg-primary text-primary-foreground text-sm font-bold py-2.5 px-4 hover:bg-primary/90 transition-colors"

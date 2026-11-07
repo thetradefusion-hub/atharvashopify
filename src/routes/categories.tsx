@@ -21,11 +21,11 @@ export const Route = createFileRoute("/categories")({
   component: CategoriesPage,
   head: () => ({
     meta: [
-      { title: "Shop by Category — DARDGO Ayurvedic Products" },
+      { title: "Shop by Category — Atharva Health Solutions Ayurvedic Products" },
       {
         name: "description",
         content:
-          "Browse all DARDGO products by category — wellness oils, tablets, capsules, beauty, and more.",
+          "Browse all Atharva Health Solutions products by category — wellness oils, tablets, capsules, beauty, and more.",
       },
     ],
   }),

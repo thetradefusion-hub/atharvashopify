@@ -28,26 +28,26 @@ export default defineConfig({
           /** Avoids dev-worker clashes with Nitro on some setups (503 "nitro env unavailable"). */
           enabled: false,
         },
-        includeAssets: ["favicon.svg", "dardgo.png", "dardgo_logo_300x.avif"],
+        includeAssets: ["favicon.svg", "atharva-logo.png", "atharva-icon.png"],
         manifest: {
-          name: "DARDGO",
-          short_name: "DARDGO",
+          name: "Atharva Health Solutions",
+          short_name: "Atharva",
           description:
-            "DARDGO — Ayurvedic-inspired herbal wellness oils, topicals, and comfort products.",
-          theme_color: "#2E7D32",
-          background_color: "#F8F5EF",
+            "Atharva Health Solutions — Ayurvedic herbal wellness. Ancient wisdom. Modern wellness.",
+          theme_color: "#5B2C6F",
+          background_color: "#F7F4FA",
           display: "standalone",
           scope: "/",
           start_url: "/",
           icons: [
             {
-              src: "/dardgo.png",
+              src: "/atharva-icon.png",
               sizes: "192x192",
               type: "image/png",
               purpose: "any",
             },
             {
-              src: "/dardgo.png",
+              src: "/atharva-icon.png",
               sizes: "512x512",
               type: "image/png",
               purpose: "any maskable",

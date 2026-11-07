@@ -18,13 +18,17 @@ import { BuyNowShiprocketBar } from "@/components/BuyNowShiprocketBar";
 export function CartDrawer() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
+  const [cartReady, setCartReady] = useState(false);
   const { items, isLoading, isSyncing, updateQuantity, removeItem, getCheckoutUrl, syncCart } =
     useCartStore();
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
+  const badgeCount = cartReady ? totalItems : 0;
   const totalPrice = items.reduce(
     (sum, item) => sum + parseFloat(item.price.amount) * item.quantity,
     0,
   );
+
+  useEffect(() => setCartReady(true), []);
 
   useEffect(() => {
     if (isOpen) syncCart();
@@ -49,9 +53,9 @@ export function CartDrawer() {
       <SheetTrigger asChild>
         <button className="relative p-2 rounded-md text-foreground hover:text-primary transition-colors">
           <ShoppingCart className="h-5 w-5" />
-          {totalItems > 0 && (
+          {badgeCount > 0 && (
             <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-bold">
-              {totalItems}
+              {badgeCount}
             </span>
           )}
         </button>

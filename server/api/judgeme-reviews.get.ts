@@ -167,8 +167,10 @@ export default defineEventHandler(async (event) => {
 
     return { reviews, total, page: safePage, perPage, totalPages };
   } catch (err) {
+    // Soft-fail: empty reviews (e.g. wrong shop token) — don't break PDP with 500.
     const message = err instanceof Error ? err.message : "Judge.me fetch failed";
-    setResponseStatus(event, 500);
+    console.warn("[judgeme-reviews]", message);
+    setResponseStatus(event, 200);
     return { error: message, reviews: [], total: 0, page: 1, perPage, totalPages: 0 };
   }
 });

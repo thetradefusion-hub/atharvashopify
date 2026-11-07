@@ -1,10 +1,10 @@
 /**
  * Blog posts mirrored from the legacy “Know Ayurvedic Products” journal:
- * https://dardgo.com/blogs/know-ayurvedic-products
+ * https://www.atharvahealthsolutions.com/blogs/know-ayurvedic-products
  * Full article bodies were sourced from the live posts where available (2026 snapshot).
  */
 
-export type DardgoBlogCategory =
+export type AtharvaBlogCategory =
   | "Wellness"
   | "Joint Care"
   | "Lifestyle"
@@ -13,11 +13,11 @@ export type DardgoBlogCategory =
   | "Ingredients"
   | "Beauty";
 
-export interface DardgoBlogPost {
+export interface AtharvaBlogPost {
   slug: string;
   title: string;
   excerpt: string;
-  category: DardgoBlogCategory;
+  category: AtharvaBlogCategory;
   author: string;
   date: string;
   readTime: string;
@@ -28,14 +28,14 @@ export interface DardgoBlogPost {
   content: string[];
 }
 
-export const dardgoBlogPosts: DardgoBlogPost[] = [
+export const dardgoBlogPosts: AtharvaBlogPost[] = [
   {
     slug: "understanding-and-managing-joint-pain-and-body-pain-a-comprehensive-guide",
     title: "Understanding and Managing Joint Pain and Body Pain: A Comprehensive Guide",
     excerpt:
       "Joint pain and body pain affect millions worldwide. Learn causes, symptoms, practical remedies, and when to seek care — so you can move through life with more comfort.",
     category: "Joint Care",
-    author: "DARDGO Editorial",
+    author: "Atharva Health Solutions Editorial",
     date: "December 10, 2024",
     readTime: "12 min",
     featured: true,
@@ -85,11 +85,11 @@ export const dardgoBlogPosts: DardgoBlogPost[] = [
   },
   {
     slug: "ayurvedic-sugar-control-powder-diabetic-care-by-dardgo",
-    title: "Ayurvedic Sugar Control Powder: Diabetic Care by DARDGO",
+    title: "Ayurvedic Sugar Control Powder: Diabetic Care by Atharva Health Solutions",
     excerpt:
       "Discover how Ayurvedic Sugar Control Powder supports healthy blood sugar with herbs like Gudmar, Jamun, Karela, and Amla — plus lifestyle tips for daily balance.",
     category: "Wellness",
-    author: "DARDGO Editorial",
+    author: "Atharva Health Solutions Editorial",
     date: "November 8, 2024",
     readTime: "11 min",
     trending: true,
@@ -136,7 +136,7 @@ export const dardgoBlogPosts: DardgoBlogPost[] = [
     excerpt:
       "Unlock sustained energy with Extra Power Halwa — Triphala, Swarna Bhasma, Safed Musli, and more — for vitality without relying on harsh synthetic stimulants.",
     category: "Immunity",
-    author: "DARDGO Editorial",
+    author: "Atharva Health Solutions Editorial",
     date: "September 17, 2024",
     readTime: "14 min",
     trending: true,
@@ -178,14 +178,14 @@ export const dardgoBlogPosts: DardgoBlogPost[] = [
     excerpt:
       "Successful pain care supports both activity and peace of mind. Learn how Ayurvedic pain relief oils offer a holistic path — warmth, massage, and herbs rooted in tradition.",
     category: "Pain Relief",
-    author: "DARDGO Marketing",
+    author: "Atharva Health Solutions Marketing",
     date: "July 28, 2024",
     readTime: "8 min",
     tags: ["pain relief oil", "massage oil", "joint pain", "Ayurvedic oil", "natural relief"],
     content: [
       "Successful care for pain forms the keystone of health and activity in today’s fast-paced life. Pain relief oils rooted in Ayurveda take a whole-person view — easing discomfort while supporting circulation, relaxation, and mobility.",
       "Ayurvedic pain relief oils blend natural ingredients such as essential oils and herbal extracts. Used with massage, they can help soothe sore muscles and stiff joints, offering warmth and ease many people prefer over relying solely on pills.",
-      "At DARDGO, our objective is to offer high-quality pain alleviation products grounded in Ayurvedic knowledge — so that our pain relief oils deliver the comfort and ease your routine deserves.",
+      "At Atharva Health Solutions, our objective is to offer high-quality pain alleviation products grounded in Ayurvedic knowledge — so that our pain relief oils deliver the comfort and ease your routine deserves.",
       "Why topical oils?",
       "Massage improves blood flow to tissues and can reduce tension. Warm oils may enhance relaxation and complement stretching, posture work, and physician-guided care.",
       "Holistic habits that amplify results",
@@ -198,13 +198,13 @@ export const dardgoBlogPosts: DardgoBlogPost[] = [
   },
 ];
 
-export function getDardgoBlogPost(slug: string): DardgoBlogPost | undefined {
+export function getAtharvaBlogPost(slug: string): AtharvaBlogPost | undefined {
   return dardgoBlogPosts.find((p) => p.slug === slug);
 }
 
 /** Listing cards: metadata without full article body (smaller import for index page). */
-export type DardgoBlogPostMeta = Omit<DardgoBlogPost, "content">;
+export type AtharvaBlogPostMeta = Omit<AtharvaBlogPost, "content">;
 
-export const dardgoBlogPostsMeta: DardgoBlogPostMeta[] = dardgoBlogPosts.map(
+export const dardgoBlogPostsMeta: AtharvaBlogPostMeta[] = dardgoBlogPosts.map(
   ({ content: _c, ...meta }) => meta,
 );

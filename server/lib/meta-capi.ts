@@ -16,10 +16,10 @@ export function getMetaAccessToken(): string | null {
 }
 
 export function getMetaCapiSiteUrl(): string {
-  const fromEnv = process.env.SITE_URL || process.env.VITE_PUBLIC_APP_URL || "https://www.dardgo.in";
+  const fromEnv = process.env.SITE_URL || process.env.VITE_PUBLIC_APP_URL || "https://www.atharvahealthsolutions.com";
   let origin = fromEnv.trim().replace(/\/$/, "");
   if (/\.myshopify\.com$/i.test(new URL(origin).hostname)) {
-    origin = "https://www.dardgo.in";
+    origin = "https://www.atharvahealthsolutions.com";
   }
   return origin;
 }

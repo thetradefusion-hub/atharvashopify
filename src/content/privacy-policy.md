@@ -1,8 +1,8 @@
-<!-- Synced with https://dardgo.com/pages/privacy-policy (Last updated 09/05/2026) -->
+<!-- Synced with https://www.atharvahealthsolutions.com/pages/privacy-policy (Last updated 09/05/2026) -->
 
 Last updated: 09/05/2026
 
-This Privacy Policy describes how **Dardgo Pharma Private Limited** (the "**Site**", "**we**", "**us**", or "**our**") collects, uses, and discloses your personal information when you visit, use our services, or make a purchase from our online store (including **dardgo.in** and **dardgostore.myshopify.com**) or otherwise communicate with us (collectively, the "**Services**"). For purposes of this Privacy Policy, "**you**" and "**your**" means you as the user of the Services, whether you are a customer, website visitor, or another individual whose information we have collected pursuant to this Privacy Policy.
+This Privacy Policy describes how **Atharva Health Solutions** (the "**Site**", "**we**", "**us**", or "**our**") collects, uses, and discloses your personal information when you visit, use our services, or make a purchase from our online store (including **atharvahealthsolutions.com** and **dardgo-6404.myshopify.com**) or otherwise communicate with us (collectively, the "**Services**"). For purposes of this Privacy Policy, "**you**" and "**your**" means you as the user of the Services, whether you are a customer, website visitor, or another individual whose information we have collected pursuant to this Privacy Policy.
 
 Please read this Privacy Policy carefully. By using and accessing any of the Services, you agree to the collection, use, and disclosure of your information as described in this Privacy Policy. If you do not agree to this Privacy Policy, please do not use or access any of the Services.
 
@@ -140,6 +140,6 @@ If we transfer your personal information out of Europe, we will rely on recogniz
 
 ## Contact
 
-Should you have any questions about our privacy practices or this Privacy Policy, or if you would like to exercise any of the rights available to you, please call [+91 93299 12659](tel:+919329912659) or email [care@dardgo.in](mailto:care@dardgo.in).
+Should you have any questions about our privacy practices or this Privacy Policy, or if you would like to exercise any of the rights available to you, please call [+91 96693 61290](tel:+919669361290) or email [support@atharvahealthsolutions.com](mailto:support@atharvahealthsolutions.com).
 
-DardGo Pharma, trusted worldwide since 2006 for effective Ayurvedic solutions. Honesty and commitment define our service.
+Atharva Health Solutions, trusted worldwide since 2006 for effective Ayurvedic solutions. Honesty and commitment define our service.

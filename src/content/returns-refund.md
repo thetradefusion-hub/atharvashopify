@@ -1,10 +1,10 @@
-<!-- Synced with https://dardgo.com/pages/return-policy -->
+<!-- Synced with https://www.atharvahealthsolutions.com/pages/return-policy -->
 
 We have a 30-day return policy, which means you have 30 days after receiving your item to request a return.
 
 To be eligible for a return, your item must be in the same condition that you received it, unworn or unused, with tags, and in its original packaging. You'll also need the receipt or proof of purchase.
 
-To start a return, you can [contact us](/contact), call [+91 93299 12659](tel:+919329912659), or email [care@dardgo.in](mailto:care@dardgo.in). Please note that returns will need to be sent to the following address: B No. 38/k, 33 Abdul Jabbar, Ward No. 09, Mohan Marg, Dr Khan Gali, Balaghat, Balaghat-481001, Madhya Pradesh.
+To start a return, you can [contact us](/contact), call [+91 96693 61290](tel:+919669361290), or email [support@atharvahealthsolutions.com](mailto:support@atharvahealthsolutions.com). Please note that returns will need to be sent to the following address: Atharva Health Solution, Dunda Seoni, Seoni, Madhya Pradesh – 480661, India.
 
 If your return is accepted, we'll send you a return shipping label, as well as instructions on how and where to send your package. Items sent back to us without first requesting a return will not be accepted.
 
@@ -34,4 +34,4 @@ We will notify you once we've received and inspected your return, and let you kn
 
 If more than 15 business days have passed since we've approved your return, please [contact us](/contact).
 
-DardGo Pharma, trusted worldwide since 2006 for effective Ayurvedic solutions. Honesty and commitment define our service.
+Atharva Health Solutions, trusted worldwide since 2006 for effective Ayurvedic solutions. Honesty and commitment define our service.

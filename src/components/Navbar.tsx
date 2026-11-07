@@ -4,15 +4,15 @@ import { Menu, X, ChevronDown, Search, Heart, Sparkles, User, PackageSearch } fr
 import { CartDrawer } from "@/components/CartDrawer";
 import { SearchDrawer } from "@/components/SearchDrawer";
 import { motion, AnimatePresence } from "framer-motion";
-import dardgoLogo from "@/assets/dardgo-logo.webp";
+import atharvaLogo from "@/assets/atharva-logo.png";
 import { SHOP_CATEGORIES } from "@/lib/shop-categories";
 
 const announcements = [
   "Free shipping on prepaid orders above ₹249",
-  "Ayurvedic-inspired herbal wellness · transparent labels",
-  "AYUSH-oriented range · GMP-focused manufacturing",
+  "Ayurvedic herbal wellness · 100% natural formulations",
+  "Ancient wisdom. Modern wellness.",
   "COD available @ ₹30 per order where offered",
-  "Serving families since 2006",
+  "Atharva Health Solutions · Seoni, MP",
 ];
 
 const navLinks = [
@@ -121,12 +121,12 @@ export function Navbar() {
             <Link
               to="/"
               className="flex items-center flex-shrink-0 min-w-0 group"
-              aria-label="DARDGO home"
+              aria-label="Atharva Health Solutions home"
             >
               <img
-                src={dardgoLogo}
-                alt="DARDGO"
-                className={`w-auto transition-all duration-300 group-hover:scale-[1.03] ${
+                src={atharvaLogo}
+                alt="Atharva Health Solutions"
+                className={`w-auto max-w-[min(52vw,220px)] sm:max-w-[260px] object-contain object-left transition-all duration-300 group-hover:scale-[1.02] ${
                   isScrolled ? "h-11 sm:h-12" : "h-12 sm:h-14"
                 }`}
               />
@@ -340,7 +340,7 @@ export function Navbar() {
                   <p className="text-eyebrow text-foreground/60 mb-2">Need help?</p>
                   <div className="flex items-center gap-2">
                     <a
-                      href="https://wa.me/919329912659"
+                      href="https://wa.me/919669361290"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex-1 text-center py-2.5 rounded-xl bg-primary text-primary-foreground text-xs font-bold"
@@ -348,7 +348,7 @@ export function Navbar() {
                       WhatsApp
                     </a>
                     <a
-                      href="tel:+919329912659"
+                      href="tel:+919669361290"
                       className="flex-1 text-center py-2.5 rounded-xl bg-card border border-border text-foreground text-xs font-bold"
                     >
                       Call us

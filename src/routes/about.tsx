@@ -24,11 +24,11 @@ export const Route = createFileRoute("/about")({
   component: AboutPage,
   head: () => ({
     meta: [
-      { title: "About DARDGO Pharma — Ayurvedic-inspired wellness since 2006 | dardgo.in" },
+      { title: "About Atharva Health Solutions — Ayurvedic-inspired wellness since 2006 | atharvahealthsolutions.com" },
       {
         name: "description",
         content:
-          "DardGo Pharma Pvt. Ltd. crafts herbal oils, topicals, and traditional formulations from Balaghat, MP — focused on quality, transparency, and responsible wellness storytelling.",
+          "Atharva Health Solutions crafts herbal oils, topicals, and traditional formulations from Seoni, MP — focused on quality, transparency, and responsible wellness storytelling.",
       },
     ],
   }),
@@ -97,10 +97,10 @@ function AboutPage() {
                 Trusted since 2006
               </span>
               <h1 className="text-3xl sm:text-5xl font-bold text-foreground mb-4 break-words">
-                About <span className="text-gradient-green">DardGo Pharma</span>
+                About <span className="text-gradient-green">Atharva Health Solutions</span>
               </h1>
               <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed text-base sm:text-lg">
-                From Balaghat, Madhya Pradesh, we formulate Ayurvedic-inspired wellness products for
+                From Seoni, Madhya Pradesh, we formulate Ayurvedic-inspired wellness products for
                 people who value heritage, honest labeling, and everyday comfort — without
                 overpromising clinical outcomes.
               </p>
@@ -113,9 +113,9 @@ function AboutPage() {
                 <div>
                   <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">Our story</h2>
                   <p className="text-muted-foreground leading-relaxed mb-4">
-                    DardGo Pharma Pvt. Ltd. began as a family-led effort to bring transparent herbal
+                    Atharva Health Solutions began as a family-led effort to bring transparent herbal
                     products to households across India and the diaspora. Today we still manufacture
-                    from Balaghat with a focus on batch discipline, supplier traceability, and clear
+                    from Seoni with a focus on batch discipline, supplier traceability, and clear
                     communication about what our products are — and are not.
                   </p>
                   <p className="text-muted-foreground leading-relaxed">
@@ -178,7 +178,7 @@ function AboutPage() {
                   Flagship line
                 </span>
                 <h2 className="text-2xl sm:text-3xl font-bold mb-4">
-                  DARDGO herbal massage &amp; comfort oils
+                  Atharva Health Solutions herbal massage &amp; comfort oils
                 </h2>
                 <p className="text-white/80 leading-relaxed mb-6 max-w-3xl">
                   Our flagship oils blend carrier oils such as mustard with traditional botanicals
@@ -250,11 +250,10 @@ function AboutPage() {
               <div className="flex-1">
                 <p className="text-eyebrow text-muted-foreground mb-1">Registered office</p>
                 <h3 className="text-lg sm:text-xl font-bold text-foreground mb-1">
-                  DardGo Pharma Pvt. Ltd. · Balaghat, Madhya Pradesh
+                  Atharva Health Solutions · Seoni, Madhya Pradesh
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  38/K, 33 Abdul Jabbar, Ward No. 09, Mohan Marg, Dr Khan Gali, Balaghat&nbsp;–
-                  481001, MP, India
+                  Atharva Health Solution, Dunda Seoni, Seoni, Madhya Pradesh – 480661, India
                 </p>
               </div>
               <Link

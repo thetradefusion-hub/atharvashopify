@@ -5,7 +5,7 @@ import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { MobileBottomNav } from "@/components/MobileBottomNav";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { ChevronLeft, Share2, Clock, Calendar } from "lucide-react";
-import { getDardgoBlogPost } from "@/content/dardgoBlogPosts";
+import { getAtharvaBlogPost } from "@/content/dardgoBlogPosts";
 
 const defaultContent = {
   title: "Ayurvedic Health Article",
@@ -14,7 +14,7 @@ const defaultContent = {
   readTime: "5 min read",
   content: [
     "This article is not available. Browse our Know Ayurvedic Products articles from the blog listing.",
-    "Explore DARDGO’s premium Ayurvedic products — 100% natural and rooted in traditional wisdom.",
+    "Explore Atharva Health Solutions’s premium Ayurvedic products — 100% natural and rooted in traditional wisdom.",
   ],
 };
 
@@ -23,13 +23,13 @@ export const Route = createFileRoute("/blog/$slug")({
   head: ({ params }) => ({
     meta: [
       {
-        title: `${getDardgoBlogPost(params.slug)?.title || "Blog"} — DARDGO`,
+        title: `${getAtharvaBlogPost(params.slug)?.title || "Blog"} — Atharva Health Solutions`,
       },
       {
         name: "description",
         content:
-          getDardgoBlogPost(params.slug)?.excerpt ||
-          "Ayurvedic health insights from DARDGO — Know Ayurvedic Products.",
+          getAtharvaBlogPost(params.slug)?.excerpt ||
+          "Ayurvedic health insights from Atharva Health Solutions — Know Ayurvedic Products.",
       },
     ],
   }),
@@ -37,7 +37,7 @@ export const Route = createFileRoute("/blog/$slug")({
 
 function BlogDetailPage() {
   const { slug } = Route.useParams();
-  const full = getDardgoBlogPost(slug);
+  const full = getAtharvaBlogPost(slug);
   const post = full
     ? {
         title: full.title,

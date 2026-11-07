@@ -1,4 +1,4 @@
-<!-- DARDGO FAQs -->
+<!-- Atharva Health Solutions FAQs -->
 
 ## Frequently Asked Questions (FAQs) – DARD GO
 
@@ -12,7 +12,7 @@ Yes, all DARD GO products are based on Ayurvedic and herbal formulations.
 
 ### 3. Where is DARD GO located?
 
-DARD GO Pharma Pvt. Ltd. is based in Balaghat, Madhya Pradesh, India.
+DARD GO Pharma Pvt. Ltd. is based in Seoni, Madhya Pradesh, India.
 
 ### 4. What types of products does DARD GO offer?
 
@@ -56,8 +56,8 @@ Yes, we provide shipping services across most locations in India.
 
 You can contact us through:
 
-- Phone: [+91 93299 12659](tel:+919329912659)
-- [WhatsApp](https://wa.me/919329912659)
+- Phone: [+91 96693 61290](tel:+919669361290)
+- [WhatsApp](https://wa.me/919669361290)
 - [Contact form](/contact) on the website
 
 ### 13. Can distributors or retailers partner with DARD GO?

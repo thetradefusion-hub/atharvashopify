@@ -4,7 +4,7 @@
 
 ## General
 
-The materials on this website are provided by **DardGo Pharma Pvt. Ltd.** (“DARDGO,” “we,” “us,” or “our”) for general information and shopping convenience. We strive to keep product descriptions, images, and availability accurate; however, we do not warrant that any content is complete, current, or error-free at all times.
+The materials on this website are provided by **Atharva Health Solutions** (“Atharva Health Solutions,” “we,” “us,” or “our”) for general information and shopping convenience. We strive to keep product descriptions, images, and availability accurate; however, we do not warrant that any content is complete, current, or error-free at all times.
 
 ## Not medical advice
 
@@ -20,6 +20,6 @@ Links to third-party sites or payment providers are for convenience. We are not 
 
 ## Limitation
 
-To the fullest extent permitted by applicable law, DardGo Pharma Pvt. Ltd. disclaims liability for any reliance on general website content except as required by law. For order-specific issues, see our [Returns & Refund](/returns-refund) and [Terms & Conditions](/terms-conditions) pages.
+To the fullest extent permitted by applicable law, Atharva Health Solutions disclaims liability for any reliance on general website content except as required by law. For order-specific issues, see our [Returns & Refund](/returns-refund) and [Terms & Conditions](/terms-conditions) pages.
 
 For regulatory statements about product claims, see our [Medical / product disclaimer](/medical-disclaimer).

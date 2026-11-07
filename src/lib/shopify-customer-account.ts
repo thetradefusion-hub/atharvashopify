@@ -19,7 +19,7 @@ const PKCE_NONCE_KEY = "dardgo_oauth_nonce";
 /** Shopify-hosted customer login (KwikPass / theme account page). */
 export const SHOPIFY_KP_ACCOUNT_URL =
   (import.meta.env.VITE_SHOPIFY_ACCOUNT_LOGIN_URL as string | undefined)?.trim() ||
-  "https://dardgo-6404.myshopify.com/pages/kp-account";
+  "https://vemsj1-ag.myshopify.com/account/login";
 
 export function redirectToShopifyKpAccount(): void {
   if (typeof window === "undefined") return;

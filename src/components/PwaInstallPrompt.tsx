@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 
-const STORAGE_KEY = "dardgo_pwa_install_prompt_v1";
+const STORAGE_KEY = "atharva_pwa_install_prompt_v1";
 /** Show again at most once per this interval after dismiss (between 2–3 hours). */
 const COOLDOWN_MS = 2.5 * 60 * 60 * 1000;
 const SHOW_DELAY_MS = 2800;
@@ -176,7 +176,7 @@ export function PwaInstallPrompt() {
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent className="max-w-[min(100vw-2rem,380px)] rounded-2xl border-border p-5 sm:p-6">
         <DialogHeader>
-          <DialogTitle className="font-display text-xl">Install DARDGO app</DialogTitle>
+          <DialogTitle className="font-display text-xl">Install Atharva Health Solutions app</DialogTitle>
           <DialogDescription className="text-left text-muted-foreground">
             Open faster from your home screen and get a focused shopping experience.
           </DialogDescription>

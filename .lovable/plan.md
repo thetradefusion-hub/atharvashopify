@@ -1,8 +1,8 @@
-# DARDGO Premium Ayurvedic Storefront Redesign
+# Atharva Health Solutions Premium Ayurvedic Storefront Redesign
 
 ## Overview
 
-Complete frontend redesign of the DARDGO storefront with premium Ayurvedic healthcare aesthetics, Framer Motion animations, mobile-first design, and multiple new pages. Preserves existing Shopify Storefront API integration.
+Complete frontend redesign of the Atharva Health Solutions storefront with premium Ayurvedic healthcare aesthetics, Framer Motion animations, mobile-first design, and multiple new pages. Preserves existing Shopify Storefront API integration.
 
 **Note:** This project uses TanStack Start (not React Router DOM) for routing, so all routes will follow TanStack conventions.
 
@@ -38,7 +38,7 @@ Rebuild all homepage sections:
 3. **FeaturedProducts** — Swiper carousel of premium product cards with hover effects, ratings, discount badges, quick-add
 4. **AyurvedicBenefits** — Icon grid: Natural, Chemical-free, Certified, Doctor Approved with scroll-reveal
 5. **CategoriesSection** — Visual category cards (Pain Relief, Joint Care, Immunity, Digestive, Women/Men Wellness) with hover animations
-6. **WhyChooseDardgo** — Trust badges grid with glassmorphism cards
+6. **WhyChooseAtharva** — Trust badges grid with glassmorphism cards
 7. **Testimonials** — Modern review slider with user avatars, star ratings, video-style cards
 8. **BlogPreview** — Latest 3 blog cards with hover effects
 9. **NewsletterSection** — Organic gradient background with email input

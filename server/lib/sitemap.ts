@@ -33,10 +33,10 @@ export function getSiteOrigin(): string {
     process.env.SITE_URL ||
     process.env.VITE_PUBLIC_APP_URL ||
     (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "");
-  let origin = (fromEnv || "https://www.dardgo.in").trim().replace(/\/$/, "");
+  let origin = (fromEnv || "https://www.atharvahealthsolutions.com").trim().replace(/\/$/, "");
   // Customer-account env may point at *.myshopify.com — sitemap must use the headless storefront domain.
   if (/\.myshopify\.com$/i.test(new URL(origin).hostname)) {
-    origin = "https://www.dardgo.in";
+    origin = "https://www.atharvahealthsolutions.com";
   }
   return origin;
 }

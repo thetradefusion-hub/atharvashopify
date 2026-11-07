@@ -1,14 +1,24 @@
-/** DARDGO WhatsApp business line (E.164 without +). */
-export const DARDGO_WHATSAPP_PHONE = "919329912659";
+import { BRAND_NAME, BRAND_SHORT, BRAND_WHATSAPP_PHONE, SITE_DOMAIN } from "@/lib/brand";
 
-export const DARDGO_WHATSAPP_DISPLAY = "+91 93299 12659";
+/** Primary WhatsApp business line (E.164 without +). */
+export const ATHARVA_WHATSAPP_PHONE = BRAND_WHATSAPP_PHONE;
 
-/** Bulk-order enquiries only — other pages keep DARDGO_WHATSAPP_PHONE. */
-export const DARDGO_BULK_ORDER_WHATSAPP_PHONE = "918517960888";
+export const ATHARVA_WHATSAPP_DISPLAY = "+91 96693 61290";
 
-export const DARDGO_BULK_ORDER_WHATSAPP_DISPLAY = "+91 8517960888";
+/** Bulk-order enquiries — same primary line unless a dedicated number is added later. */
+export const ATHARVA_BULK_ORDER_WHATSAPP_PHONE = BRAND_WHATSAPP_PHONE;
+export const ATHARVA_BULK_ORDER_WHATSAPP_DISPLAY = ATHARVA_WHATSAPP_DISPLAY;
 
-export function buildWhatsAppUrl(message: string, phone = DARDGO_WHATSAPP_PHONE): string {
+/** @deprecated Prefer ATHARVA_WHATSAPP_PHONE */
+export const DARDGO_WHATSAPP_PHONE = ATHARVA_WHATSAPP_PHONE;
+/** @deprecated Prefer ATHARVA_WHATSAPP_DISPLAY */
+export const DARDGO_WHATSAPP_DISPLAY = ATHARVA_WHATSAPP_DISPLAY;
+/** @deprecated Prefer ATHARVA_BULK_ORDER_WHATSAPP_PHONE */
+export const DARDGO_BULK_ORDER_WHATSAPP_PHONE = ATHARVA_BULK_ORDER_WHATSAPP_PHONE;
+/** @deprecated Prefer ATHARVA_BULK_ORDER_WHATSAPP_DISPLAY */
+export const DARDGO_BULK_ORDER_WHATSAPP_DISPLAY = ATHARVA_BULK_ORDER_WHATSAPP_DISPLAY;
+
+export function buildWhatsAppUrl(message: string, phone = ATHARVA_WHATSAPP_PHONE): string {
   const text = message.trim();
   const base = `https://wa.me/${phone}`;
   return text ? `${base}?text=${encodeURIComponent(text)}` : base;
@@ -27,7 +37,7 @@ export type BulkOrderFormData = {
 
 export function buildBulkOrderWhatsAppMessage(data: BulkOrderFormData): string {
   const lines = [
-    "Hello DARDGO, I would like to place a *bulk order*.",
+    `Hello ${BRAND_SHORT}, I would like to place a *bulk order*.`,
     "",
     `*Name:* ${data.name}`,
     `*Phone:* ${data.phone}`,
@@ -38,14 +48,16 @@ export function buildBulkOrderWhatsAppMessage(data: BulkOrderFormData): string {
   lines.push(`*Products:* ${data.products}`);
   lines.push(`*Approx. quantity:* ${data.quantity}`);
   if (data.notes.trim()) lines.push(`*Notes:* ${data.notes.trim()}`);
-  lines.push("", "Sent from dardgo.in bulk order form");
+  lines.push("", `Sent from ${SITE_DOMAIN} bulk order form`);
   return lines.join("\n");
 }
 
 export function openBulkOrderWhatsApp(data: BulkOrderFormData): void {
   const url = buildWhatsAppUrl(
     buildBulkOrderWhatsAppMessage(data),
-    DARDGO_BULK_ORDER_WHATSAPP_PHONE,
+    ATHARVA_BULK_ORDER_WHATSAPP_PHONE,
   );
   window.open(url, "_blank", "noopener,noreferrer");
 }
+
+export { BRAND_NAME };

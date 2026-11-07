@@ -22,7 +22,7 @@ const testimonials = [
     name: "Amit P.",
     location: "Ahmedabad",
     rating: 5,
-    text: "We use DARDGO products as part of a broader wellness routine my doctor is comfortable with. Appreciate the straightforward ingredient lists.",
+    text: "We use Atharva Health Solutions products as part of a broader wellness routine my doctor is comfortable with. Appreciate the straightforward ingredient lists.",
     initials: "AP",
     verified: true,
   },

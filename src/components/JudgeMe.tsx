@@ -42,10 +42,12 @@ export async function ensureJudgeMeSettingsLoaded(): Promise<void> {
           api_token: cfg.publicToken,
         });
         const res = await fetch(`https://api.judge.me/api/v1/widgets/settings?${params}`);
-        if (res.ok) {
-          const data = (await res.json()) as { settings?: string };
-          if (data.settings) injectJudgeMeSettings(data.settings);
+        if (!res.ok) {
+          // Invalid token/shop pairing — skip widgets quietly (avoids noisy 401 loops).
+          return;
         }
+        const data = (await res.json()) as { settings?: string };
+        if (data.settings) injectJudgeMeSettings(data.settings);
       } catch {
         /* noop */
       }
@@ -68,17 +70,19 @@ export type JudgeMeConfig = {
 };
 
 export function getJudgeMeConfig(): JudgeMeConfig | null {
+  const publicToken =
+    (import.meta.env.VITE_JUDGEME_PUBLIC_TOKEN as string | undefined)?.trim() || "";
+  // Require an explicit public token so we never call Judge.me with a mismatched shop.
+  if (!publicToken) return null;
   const shopDomain = (
     (import.meta.env.VITE_JUDGEME_SHOP_DOMAIN as string | undefined)?.trim() ||
     (import.meta.env.VITE_SHOPIFY_STORE_DOMAIN as string | undefined)?.trim() ||
     ""
   ).replace(/^https?:\/\//, "");
-  const publicToken =
-    (import.meta.env.VITE_JUDGEME_PUBLIC_TOKEN as string | undefined)?.trim() || "";
   const cdnHost = (
     (import.meta.env.VITE_JUDGEME_CDN_HOST as string | undefined)?.trim() || "https://cdn.judge.me"
   ).replace(/\/$/, "");
-  if (!shopDomain || !publicToken) return null;
+  if (!shopDomain) return null;
   return { shopDomain, publicToken, cdnHost };
 }
 

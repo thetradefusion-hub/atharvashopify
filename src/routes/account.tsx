@@ -36,8 +36,8 @@ export const Route = createFileRoute("/account")({
   component: AccountPage,
   head: () => ({
     meta: [
-      { title: "My account — DARDGO" },
-      { name: "description", content: "Sign in to view orders, addresses, and profile on DARDGO." },
+      { title: "My account — Atharva Health Solutions" },
+      { name: "description", content: "Sign in to view orders, addresses, and profile on Atharva Health Solutions." },
     ],
   }),
 });

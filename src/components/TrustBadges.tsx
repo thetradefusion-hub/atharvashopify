@@ -6,7 +6,7 @@ const badges = [
   { icon: FlaskConical, title: "GMP-focused", desc: "Manufacturing best practice" },
   { icon: Shield, title: "Lab tested", desc: "Batch specifications monitored" },
   { icon: Award, title: "Botanical-first", desc: "Transparent ingredient lists" },
-  { icon: MapPin, title: "Made in India", desc: "Balaghat, Madhya Pradesh" },
+  { icon: MapPin, title: "Made in India", desc: "Seoni, Madhya Pradesh" },
 ];
 
 export function TrustBadges() {

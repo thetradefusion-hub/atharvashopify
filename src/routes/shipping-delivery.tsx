@@ -8,18 +8,18 @@ import { Clock, Package, Truck } from "lucide-react";
 
 /**
  * Policy copy aligned with the legacy page:
- * https://dardgo.com/pages/shipping-delivery
+ * https://www.atharvahealthsolutions.com/pages/shipping-delivery
  */
 
 export const Route = createFileRoute("/shipping-delivery")({
   component: ShippingDeliveryPage,
   head: () => ({
     meta: [
-      { title: "Shipping & Delivery | DARDGO" },
+      { title: "Shipping & Delivery | Atharva Health Solutions" },
       {
         name: "description",
         content:
-          "DARDGO shipping within India: free delivery, estimated timelines for metro and remote areas, and our commitment to on-time, safe orders.",
+          "Atharva Health Solutions shipping within India: free delivery, estimated timelines for metro and remote areas, and our commitment to on-time, safe orders.",
       },
     ],
   }),
@@ -46,7 +46,7 @@ function ShippingDeliveryPage() {
           <ScrollReveal>
             <div className="max-w-none text-foreground/90">
               <p className="leading-relaxed text-muted-foreground mb-6">
-                At Dardgo Pharma Private Limited, we strive to provide the best possible customer
+                At Atharva Health Solutions, we strive to provide the best possible customer
                 service to all our valued customers. We understand that receiving your order on time
                 and in good condition is crucial, and we are committed to making your shopping
                 experience with us as smooth and hassle-free as possible.
@@ -73,7 +73,7 @@ function ShippingDeliveryPage() {
               <div className="flex items-start gap-3 rounded-xl bg-muted/40 border border-border/40 px-4 py-3 text-sm text-muted-foreground">
                 <Clock className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" strokeWidth={2.2} />
                 <p className="leading-relaxed mb-0">
-                  DardGo Pharma — trusted worldwide since 2006 for effective Ayurvedic solutions.
+                  Atharva Health Solutions — trusted worldwide since 2006 for effective Ayurvedic solutions.
                   Honesty and commitment define our service.
                 </p>
               </div>

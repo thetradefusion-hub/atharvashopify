@@ -26,7 +26,7 @@ export function ProductStructuredData({ product }: Props) {
     image: img ? [img] : undefined,
     brand: {
       "@type": "Brand",
-      name: "DARDGO",
+      name: "Atharva Health Solutions",
     },
     sku: product.handle,
     offers: price
@@ -40,7 +40,7 @@ export function ProductStructuredData({ product }: Props) {
             : "https://schema.org/OutOfStock",
           seller: {
             "@type": "Organization",
-            name: "DardGo Pharma Pvt. Ltd.",
+            name: "Atharva Health Solutions",
           },
         }
       : undefined,

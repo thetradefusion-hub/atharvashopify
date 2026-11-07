@@ -10,7 +10,7 @@ import { SITE_URL } from "@/lib/compliance";
 
 const faqs = [
   {
-    q: "Are DARDGO products Ayurvedic?",
+    q: "Are Atharva Health Solutions products Ayurvedic?",
     a: "Our range is inspired by traditional Ayurvedic practice and manufactured under quality-focused processes. Individual products list their format (oil, roll-on, tablet, etc.) and directions on the label.",
   },
   {
@@ -27,7 +27,7 @@ const faqs = [
   },
   {
     q: "What if I need to return an item?",
-    a: "We publish clear return windows and conditions on our Returns & Refund page. Contact care@dardgo.in with your order ID for help.",
+    a: "We publish clear return windows and conditions on our Returns & Refund page. Contact support@atharvahealthsolutions.com with your order ID for help.",
   },
 ];
 

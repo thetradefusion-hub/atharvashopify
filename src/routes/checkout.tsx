@@ -22,8 +22,8 @@ export const Route = createFileRoute("/checkout")({
   component: CheckoutPage,
   head: () => ({
     meta: [
-      { title: "Secure Checkout — DARDGO" },
-      { name: "description", content: "Encrypted checkout for DARDGO herbal wellness orders." },
+      { title: "Secure Checkout — Atharva Health Solutions" },
+      { name: "description", content: "Encrypted checkout for Atharva Health Solutions herbal wellness orders." },
     ],
   }),
 });

@@ -48,6 +48,9 @@
   --color-brand-earth: var(--brand-earth);
   --color-brand-orange: var(--brand-orange);
   --color-brand-gold: var(--brand-gold);
+  --color-brand-purple: var(--brand-purple);
+  --color-brand-purple-deep: var(--brand-purple-deep);
+  --color-brand-teal: var(--brand-teal);
 
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
@@ -67,52 +70,58 @@
 :root {
   --radius: 0.75rem;
 
-  /* DARDGO Premium Ayurvedic Palette */
-  --brand-green: oklch(0.45 0.15 145); /* #2E7D32 - Ayurvedic Green */
-  --brand-green-light: oklch(0.62 0.14 145); /* #66BB6A - Herbal Light Green */
-  --brand-green-dark: oklch(0.32 0.12 145); /* Deep forest green */
-  --brand-yellow: oklch(0.87 0.16 90); /* Gold highlight */
-  --brand-yellow-light: oklch(0.93 0.08 90); /* Soft gold */
-  --brand-cream: oklch(0.97 0.01 85); /* #F8F5EF - Warm cream */
-  --brand-beige: oklch(0.94 0.02 75); /* #EFE7DA - Soft beige */
-  --brand-earth: oklch(0.45 0.06 60); /* Earthy brown */
-  --brand-orange: oklch(0.72 0.16 55); /* Soft orange CTA */
-  --brand-gold: oklch(0.78 0.14 80); /* Premium gold */
+  /*
+   * Atharva Health Solutions — logo-matched palette
+   * Purple (wordmark/figure) · Teal (HEALTH SOLUTIONS / leaves) · Flame orange/gold (ring/flame)
+   */
+  --brand-purple: oklch(0.38 0.13 320); /* #5B2C6F Atharva purple */
+  --brand-purple-deep: oklch(0.22 0.09 320); /* Near-black purple hero */
+  --brand-teal: oklch(0.68 0.12 175); /* #00B4A0 HEALTH SOLUTIONS */
+  --brand-green: oklch(0.62 0.13 165); /* Leaf emerald-teal */
+  --brand-green-light: oklch(0.78 0.11 170); /* Soft leaf highlight */
+  --brand-green-dark: oklch(0.22 0.09 320); /* Hero/footer deep purple */
+  --brand-yellow: oklch(0.86 0.15 90); /* Flame gold #FFD54F */
+  --brand-yellow-light: oklch(0.93 0.08 95); /* Soft flame core */
+  --brand-cream: oklch(0.98 0.008 300); /* Cool lilac-tinted canvas */
+  --brand-beige: oklch(0.95 0.015 290); /* Soft lavender mist */
+  --brand-earth: oklch(0.4 0.06 320); /* Muted plum */
+  --brand-orange: oklch(0.72 0.17 55); /* Flame orange #FF8C1A */
+  --brand-gold: oklch(0.8 0.14 75); /* Amber gold ring */
 
   /* Semantic tokens */
-  --background: oklch(0.98 0.005 85); /* Warm off-white */
-  --foreground: oklch(0.15 0.02 50); /* #1E1E1E Dark text */
+  --background: oklch(0.985 0.006 300);
+  --foreground: oklch(0.2 0.04 320); /* Deep plum text */
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.15 0.02 50);
+  --card-foreground: oklch(0.2 0.04 320);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.15 0.02 50);
-  --primary: oklch(0.45 0.15 145); /* Ayurvedic Green */
-  --primary-foreground: oklch(0.99 0.005 90);
-  --secondary: oklch(0.97 0.01 85); /* Warm cream */
-  --secondary-foreground: oklch(0.25 0.04 50);
-  --muted: oklch(0.96 0.01 85);
-  --muted-foreground: oklch(0.5 0.03 50);
-  --accent: oklch(0.72 0.16 55); /* Soft orange */
-  --accent-foreground: oklch(0.99 0.005 90);
+  --popover-foreground: oklch(0.2 0.04 320);
+  --primary: oklch(0.38 0.13 320); /* Atharva purple */
+  --primary-foreground: oklch(0.99 0.005 95);
+  --secondary: oklch(0.96 0.02 175); /* Soft teal wash */
+  --secondary-foreground: oklch(0.28 0.06 320);
+  --muted: oklch(0.96 0.012 300);
+  --muted-foreground: oklch(0.48 0.03 300);
+  --accent: oklch(0.72 0.17 55); /* Flame orange CTA */
+  --accent-foreground: oklch(0.99 0.005 95);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.93 0.01 85);
-  --input: oklch(0.93 0.01 85);
-  --ring: oklch(0.45 0.15 145);
+  --border: oklch(0.92 0.015 300);
+  --input: oklch(0.92 0.015 300);
+  --ring: oklch(0.38 0.13 320);
 
-  --chart-1: oklch(0.45 0.15 145);
-  --chart-2: oklch(0.87 0.16 90);
-  --chart-3: oklch(0.62 0.14 145);
-  --chart-4: oklch(0.72 0.16 55);
-  --chart-5: oklch(0.45 0.06 60);
-  --sidebar: oklch(0.97 0.01 85);
-  --sidebar-foreground: oklch(0.15 0.02 50);
-  --sidebar-primary: oklch(0.45 0.15 145);
-  --sidebar-primary-foreground: oklch(0.99 0.005 90);
-  --sidebar-accent: oklch(0.96 0.02 85);
-  --sidebar-accent-foreground: oklch(0.25 0.04 50);
-  --sidebar-border: oklch(0.93 0.01 85);
-  --sidebar-ring: oklch(0.45 0.15 145);
+  --chart-1: oklch(0.38 0.13 320);
+  --chart-2: oklch(0.68 0.12 175);
+  --chart-3: oklch(0.72 0.17 55);
+  --chart-4: oklch(0.86 0.15 90);
+  --chart-5: oklch(0.62 0.13 165);
+  --sidebar: oklch(0.97 0.012 300);
+  --sidebar-foreground: oklch(0.2 0.04 320);
+  --sidebar-primary: oklch(0.38 0.13 320);
+  --sidebar-primary-foreground: oklch(0.99 0.005 95);
+  --sidebar-accent: oklch(0.95 0.02 175);
+  --sidebar-accent-foreground: oklch(0.28 0.06 320);
+  --sidebar-border: oklch(0.92 0.015 300);
+  --sidebar-ring: oklch(0.38 0.13 320);
 }
 
 @layer base {
@@ -247,25 +256,36 @@
 
   /* Gradient utilities */
   .text-gradient-green {
-    background: linear-gradient(135deg, var(--brand-green), var(--brand-green-light));
+    background: linear-gradient(135deg, var(--brand-teal), var(--brand-green-light));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   .text-gradient-gold {
-    background: linear-gradient(135deg, var(--brand-gold), var(--brand-yellow));
+    background: linear-gradient(135deg, var(--brand-orange), var(--brand-yellow));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .text-gradient-purple {
+    background: linear-gradient(135deg, var(--brand-purple), oklch(0.5 0.14 310));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   .text-gradient-cream {
-    background: linear-gradient(180deg, oklch(1 0 0), oklch(0.9 0.04 90));
+    background: linear-gradient(180deg, oklch(1 0 0), oklch(0.92 0.02 300));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   .bg-gradient-hero {
-    background: linear-gradient(135deg, var(--brand-green-dark), var(--brand-green));
+    background: linear-gradient(
+      135deg,
+      var(--brand-purple-deep) 0%,
+      var(--brand-purple) 48%,
+      oklch(0.32 0.1 200) 100%
+    );
   }
   .bg-gradient-warm {
     background: linear-gradient(180deg, var(--brand-cream), var(--background));
@@ -274,7 +294,7 @@
     background: linear-gradient(135deg, var(--brand-cream), var(--brand-beige));
   }
   .bg-gradient-orange {
-    background: linear-gradient(135deg, var(--brand-orange), oklch(0.78 0.14 50));
+    background: linear-gradient(135deg, var(--brand-orange), var(--brand-gold));
   }
   .bg-gradient-gold {
     background: linear-gradient(135deg, var(--brand-gold), var(--brand-yellow));
@@ -282,13 +302,13 @@
 
   /* Shadow utilities */
   .shadow-brand {
-    box-shadow: 0 8px 30px -8px oklch(0.45 0.15 145 / 0.15);
+    box-shadow: 0 8px 30px -8px oklch(0.38 0.13 320 / 0.22);
   }
   .shadow-soft {
-    box-shadow: 0 4px 20px -4px oklch(0 0 0 / 0.08);
+    box-shadow: 0 4px 20px -4px oklch(0.22 0.09 320 / 0.1);
   }
   .shadow-gold {
-    box-shadow: 0 8px 30px -8px oklch(0.87 0.16 90 / 0.35);
+    box-shadow: 0 8px 30px -8px oklch(0.72 0.17 55 / 0.35);
   }
   .shadow-card {
     box-shadow:
@@ -310,14 +330,14 @@
     box-shadow: 0 0 0 1px oklch(0 0 0 / 0.04);
   }
 
-  /* Mesh gradient hero background */
+  /* Mesh gradient hero background — purple + teal + flame */
   .bg-mesh-hero {
-    background-color: var(--brand-green-dark);
+    background-color: var(--brand-purple-deep);
     background-image:
-      radial-gradient(at 12% 18%, oklch(0.45 0.15 145 / 0.85) 0px, transparent 55%),
-      radial-gradient(at 92% 8%, oklch(0.87 0.16 90 / 0.18) 0px, transparent 50%),
-      radial-gradient(at 78% 88%, oklch(0.62 0.14 145 / 0.4) 0px, transparent 50%),
-      radial-gradient(at 6% 92%, oklch(0.32 0.12 145 / 0.95) 0px, transparent 55%);
+      radial-gradient(at 12% 18%, oklch(0.38 0.13 320 / 0.9) 0px, transparent 55%),
+      radial-gradient(at 92% 8%, oklch(0.72 0.17 55 / 0.22) 0px, transparent 50%),
+      radial-gradient(at 78% 88%, oklch(0.68 0.12 175 / 0.35) 0px, transparent 50%),
+      radial-gradient(at 6% 92%, oklch(0.18 0.08 320 / 0.95) 0px, transparent 55%);
   }
 
   /* Subtle grain texture for premium hero */
@@ -403,19 +423,19 @@
 @keyframes pulse-glow {
   0%,
   100% {
-    box-shadow: 0 0 0 0 oklch(0.45 0.15 145 / 0.4);
+    box-shadow: 0 0 0 0 oklch(0.38 0.13 320 / 0.4);
   }
   50% {
-    box-shadow: 0 0 20px 8px oklch(0.45 0.15 145 / 0);
+    box-shadow: 0 0 20px 8px oklch(0.38 0.13 320 / 0);
   }
 }
 @keyframes whatsapp-pulse {
   0%,
   100% {
-    box-shadow: 0 0 0 0 oklch(0.65 0.2 150 / 0.4);
+    box-shadow: 0 0 0 0 oklch(0.68 0.12 175 / 0.4);
   }
   50% {
-    box-shadow: 0 0 0 12px oklch(0.65 0.2 150 / 0);
+    box-shadow: 0 0 0 12px oklch(0.68 0.12 175 / 0);
   }
 }
 @keyframes shimmer {

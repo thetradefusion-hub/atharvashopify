@@ -335,8 +335,8 @@ function tabsFromParsedRecord(o: Record<string, unknown>, d: PdpTabsContent): Pd
 }
 
 function getCombinedJsonRaw(product: ProductForPdpTabs): string | null {
-  const fromDardgoNs = mfString(product?.dardgoNsPdpTabsMf);
-  if (fromDardgoNs) return fromDardgoNs;
+  const fromAtharvaNs = mfString(product?.dardgoNsPdpTabsMf);
+  if (fromAtharvaNs) return fromAtharvaNs;
 
   const fromLegacySingular = mfString(product?.dardgoPdpTabsMetafield);
   if (fromLegacySingular) return fromLegacySingular;

@@ -101,11 +101,11 @@ export const Route = createFileRoute("/terms-conditions")({
   component: TermsConditionsPage,
   head: () => ({
     meta: [
-      { title: "Terms & Conditions | DARDGO" },
+      { title: "Terms & Conditions | Atharva Health Solutions" },
       {
         name: "description",
         content:
-          "Terms of Service for Dardgo Pharma Private Limited — online store, purchases, and use of dardgo.com services.",
+          "Terms of Service for Atharva Health Solutions — online store, purchases, and use of atharvahealthsolutions.com services.",
       },
     ],
   }),

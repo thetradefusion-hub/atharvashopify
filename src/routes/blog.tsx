@@ -18,9 +18,9 @@ import { Footer } from "@/components/Footer";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { MobileBottomNav } from "@/components/MobileBottomNav";
 import { ScrollReveal } from "@/components/ScrollReveal";
-import { dardgoBlogPostsMeta, type DardgoBlogCategory } from "@/content/dardgoBlogPosts";
+import { dardgoBlogPostsMeta, type AtharvaBlogCategory } from "@/content/dardgoBlogPosts";
 
-type BlogCategory = DardgoBlogCategory;
+type BlogCategory = AtharvaBlogCategory;
 type BlogPost = (typeof dardgoBlogPostsMeta)[number];
 
 const blogPosts: BlogPost[] = dardgoBlogPostsMeta;
@@ -72,11 +72,11 @@ export const Route = createFileRoute("/blog")({
   component: BlogPage,
   head: () => ({
     meta: [
-      { title: "Ayurvedic Health Blog — DARDGO" },
+      { title: "Ayurvedic Health Blog — Atharva Health Solutions" },
       {
         name: "description",
         content:
-          "Articles from DARDGO’s Know Ayurvedic Products journal — joint care, blood sugar wellness, energy & stamina, and Ayurvedic pain relief.",
+          "Articles from Atharva Health Solutions’s Know Ayurvedic Products journal — joint care, blood sugar wellness, energy & stamina, and Ayurvedic pain relief.",
       },
     ],
   }),
@@ -127,7 +127,7 @@ function BlogPage() {
             <div className="text-center max-w-3xl mx-auto">
               <span className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-[11px] sm:text-xs font-semibold mb-3 sm:mb-4">
                 <BookOpen className="w-3.5 h-3.5" />
-                <span className="whitespace-nowrap">The DARDGO Health Journal</span>
+                <span className="whitespace-nowrap">The Atharva Health Solutions Health Journal</span>
               </span>
               <h1 className="text-display-2 text-foreground mb-3 sm:mb-4 break-words text-balance">
                 Ayurvedic <span className="text-gradient-green">insights</span> for modern living

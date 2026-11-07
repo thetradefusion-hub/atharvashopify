@@ -16,11 +16,11 @@ export const Route = createFileRoute("/disclaimer")({
   component: DisclaimerPage,
   head: () => ({
     meta: [
-      { title: "Website Disclaimer | DARDGO" },
+      { title: "Website Disclaimer | Atharva Health Solutions" },
       {
         name: "description",
         content:
-          "General website disclaimer for dardgo.in — not medical advice, product use, and limitations.",
+          "General website disclaimer for atharvahealthsolutions.com — not medical advice, product use, and limitations.",
       },
     ],
   }),

@@ -16,11 +16,11 @@ export const Route = createFileRoute("/medical-disclaimer")({
   component: MedicalDisclaimerPage,
   head: () => ({
     meta: [
-      { title: "Medical & Product Disclaimer | DARDGO" },
+      { title: "Medical & Product Disclaimer | Atharva Health Solutions" },
       {
         name: "description",
         content:
-          "DSHEA-style disclaimer and wellness information policy for DARDGO herbal products — not intended to diagnose, treat, cure, or prevent disease.",
+          "DSHEA-style disclaimer and wellness information policy for Atharva Health Solutions herbal products — not intended to diagnose, treat, cure, or prevent disease.",
       },
     ],
   }),

@@ -8,7 +8,7 @@ import { ExternalLink, MapPin, Phone, Store } from "lucide-react";
 
 /**
  * Store locator — content aligned with the legacy page:
- * https://dardgo.com/pages/dardgo-points-of-sale
+ * https://www.atharvahealthsolutions.com/pages/dardgo-points-of-sale
  */
 
 const regions: Array<{
@@ -26,20 +26,20 @@ const regions: Array<{
     name: "Madhya Pradesh",
     outlets: [
       {
-        name: "DARDGO PHARMA PRIVATE LIMITED",
-        address: "38/K 33, Abdul Jabbar, Ward Number 09, Balaghat, Madhya Pradesh — 481001",
-        phoneDisplay: "+91 93299 12659",
-        phoneTel: "+919329912659",
+        name: "Atharva Health Solutions PHARMA PRIVATE LIMITED",
+        address: "38/K 33, Abdul Jabbar, Ward Number 09, Seoni, Madhya Pradesh — 480661",
+        phoneDisplay: "+91 96693 61290",
+        phoneTel: "+919669361290",
         mapsUrl: "https://maps.app.goo.gl/2nzr5o2MDN2EJmC36",
-        mapsLabel: "DARDGO on Google Maps",
+        mapsLabel: "Atharva Health Solutions on Google Maps",
       },
       {
-        name: "DARDGO PHARMACY",
-        address: "Old Mutton Market Chowk, Baihar Road, Balaghat, Madhya Pradesh — 481001",
+        name: "Atharva Health Solutions PHARMACY",
+        address: "Old Mutton Market Chowk, Baihar Road, Seoni, Madhya Pradesh — 480661",
         phoneDisplay: "+91 89892 19192",
         phoneTel: "+918989219192",
         mapsUrl: "https://maps.app.goo.gl/Ag4QFmJuXWGuQqFV8",
-        mapsLabel: "DARDGO Pharmacy on Google Maps",
+        mapsLabel: "Atharva Health Solutionscy on Google Maps",
       },
     ],
   },
@@ -63,11 +63,11 @@ export const Route = createFileRoute("/points-of-sale")({
   component: PointsOfSalePage,
   head: () => ({
     meta: [
-      { title: "DARDGO — Points of Sale | Retail Stores & Partners" },
+      { title: "Atharva Health Solutions — Points of Sale | Retail Stores & Partners" },
       {
         name: "description",
         content:
-          "Find DARDGO Ayurvedic products at our locations in Balaghat (MP) and Puducherry — addresses, phone numbers, and Google Maps.",
+          "Find Atharva Health Solutions Ayurvedic products at our locations in Balaghat (MP) and Puducherry — addresses, phone numbers, and Google Maps.",
       },
     ],
   }),
@@ -86,10 +86,10 @@ function PointsOfSalePage() {
                 Visit us
               </span>
               <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-3 break-words">
-                DARDGO — <span className="text-gradient-green">Points of Sale</span>
+                Atharva Health Solutions — <span className="text-gradient-green">Points of Sale</span>
               </h1>
               <p className="text-muted-foreground max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
-                DARDGO products are available at the stores below. Call ahead for availability or
+                Atharva Health Solutions products are available at the stores below. Call ahead for availability or
                 directions.
               </p>
             </div>

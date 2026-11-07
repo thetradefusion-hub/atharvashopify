@@ -24,21 +24,21 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       {
-        title: "DARDGO — Ayurvedic herbal wellness & comfort care | traditional oils & supplements",
+        title: "Atharva Health Solutions — Ayurvedic herbal wellness & comfort care | traditional oils & supplements",
       },
       {
         name: "description",
         content:
-          "Shop DARDGO for Ayurvedic-inspired herbal wellness: massage oils, roll-ons, and daily comfort products made in India. AYUSH-oriented quality, transparent labels, secure checkout.",
+          "Shop Atharva Health Solutions for Ayurvedic-inspired herbal wellness: massage oils, roll-ons, and daily comfort products made in India. AYUSH-oriented quality, transparent labels, secure checkout.",
       },
       {
         property: "og:title",
-        content: "DARDGO — Premium Ayurvedic-inspired wellness for everyday comfort",
+        content: "Atharva Health Solutions — Premium Ayurvedic-inspired wellness for everyday comfort",
       },
       {
         property: "og:description",
         content:
-          "Herbal wellness support rooted in tradition — designed for active lifestyles and honest self-care. Ab Raho Har Pal Khush.",
+          "Bringing the ancient wisdom of Ayurveda to modern wellness. 100% natural, scientifically formulated health solutions.",
       },
     ],
   }),

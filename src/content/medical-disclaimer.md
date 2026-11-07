@@ -8,7 +8,7 @@
 
 ## Educational & wellness purpose
 
-Information on **dardgo.in** (including blogs, FAQs, and product descriptions) is provided for **general wellness education** and to help you understand how our products are traditionally used in Ayurvedic culture. It is **not** individualized medical advice, diagnosis, or treatment.
+Information on **atharvahealthsolutions.com** (including blogs, FAQs, and product descriptions) is provided for **general wellness education** and to help you understand how our products are traditionally used in Ayurvedic culture. It is **not** individualized medical advice, diagnosis, or treatment.
 
 ## Consult your healthcare professional
 
@@ -24,10 +24,10 @@ Individual experiences with wellness products differ. We do not guarantee specif
 
 ## AYUSH, GMP, and quality statements
 
-Certifications, licenses, and quality claims are stated as applicable to our manufacturing and regulatory filings at the time of publication. If you need verification documents for wholesale or regulatory purposes, contact **care@dardgo.in**.
+Certifications, licenses, and quality claims are stated as applicable to our manufacturing and regulatory filings at the time of publication. If you need verification documents for wholesale or regulatory purposes, contact **support@atharvahealthsolutions.com**.
 
 ## Contact
 
-**DardGo Pharma Pvt. Ltd.**  
-38/K, Mohan Marg, Balaghat, Madhya Pradesh 481001, India  
-Email: [care@dardgo.in](mailto:care@dardgo.in) · Phone: +91 93299 12659
+**Atharva Health Solutions**  
+Dunda Seoni, Seoni, Madhya Pradesh 480661, India  
+Email: [support@atharvahealthsolutions.com](mailto:support@atharvahealthsolutions.com) · Phone: +91 96693 61290

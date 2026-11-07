@@ -16,10 +16,10 @@ export const Route = createFileRoute("/cart")({
   component: CartPage,
   head: () => ({
     meta: [
-      { title: "Your Cart — DARDGO" },
+      { title: "Your Cart — Atharva Health Solutions" },
       {
         name: "description",
-        content: "Review your DARDGO Ayurvedic products cart and proceed to checkout.",
+        content: "Review your Atharva Health Solutions Ayurvedic products cart and proceed to checkout.",
       },
     ],
   }),

@@ -5,4 +5,4 @@ Disallow: /checkout
 Disallow: /account
 Disallow: /account/callback
 
-Sitemap: https://www.dardgo.in/sitemap.xml
+Sitemap: https://www.atharvahealthsolutions.com/sitemap.xml

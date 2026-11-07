@@ -72,12 +72,6 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
-import {
-  collectProductImageUrlsFromProduct,
-  pickHowToUseHeroImage,
-  pickKeyIngredientsHeroImage,
-  resolvePdpTabsFromProduct,
-} from "@/lib/product-pdp-tabs";
 
 function coerceSearchString(value: unknown): string | undefined {
   if (typeof value === "string") {
@@ -104,24 +98,15 @@ export const Route = createFileRoute("/product/$handle")({
       .join(" ");
     return {
       meta: [
-        { title: `${readable} — DARDGO herbal wellness | dardgo.in` },
+        { title: `${readable} — Atharva Health Solutions herbal wellness | atharvahealthsolutions.com` },
         {
           name: "description",
-          content: `Shop ${readable} at DARDGO — Ayurvedic-inspired herbal wellness, secure checkout, and India-wide delivery. Not intended to diagnose, treat, cure, or prevent disease.`,
+          content: `Shop ${readable} at Atharva Health Solutions — Ayurvedic-inspired herbal wellness, secure checkout, and India-wide delivery. Not intended to diagnose, treat, cure, or prevent disease.`,
         },
       ],
     };
   },
 });
-
-const TABS = [
-  "Key Ingredients",
-  "How to Use",
-  "Benefits",
-  "Suitable For",
-  "Storage & safety",
-  "FAQs",
-] as const;
 
 // Visual highlights row shown right under the description — quick-glance USPs.
 const TRUST_HIGHLIGHTS = [
@@ -143,8 +128,6 @@ function ProductPage() {
   const [mobileGalleryApi, setMobileGalleryApi] = useState<CarouselApi | null>(null);
   const [selectedVariant, setSelectedVariant] = useState(0);
   const [quantity, setQuantity] = useState(1);
-  const [activeTab, setActiveTab] = useState<(typeof TABS)[number]>("Key Ingredients");
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [recommendedProducts, setRecommendedProducts] = useState<any[]>([]);
 
   // New UX state — wishlist toggle, lightbox, review filter,
@@ -181,8 +164,6 @@ function ProductPage() {
 
   useEffect(() => {
     setSelectedImage(0);
-    setActiveTab("Key Ingredients");
-    setOpenFaq(null);
   }, [handle]);
 
   useEffect(() => {
@@ -364,7 +345,7 @@ function ProductPage() {
     const url = typeof window !== "undefined" ? window.location.href : "";
     const shareData = {
       title: product?.title,
-      text: `Check out ${product?.title} on DARDGO`,
+      text: `Check out ${product?.title} on Atharva Health Solutions`,
       url,
     };
     if (typeof navigator !== "undefined" && (navigator as any).share) {
@@ -507,19 +488,6 @@ function ProductPage() {
   useEffect(() => {
     if (reviewPage > reviewTotalPages) setReviewPage(reviewTotalPages);
   }, [reviewPage, reviewTotalPages]);
-  const productImageUrls = useMemo(() => collectProductImageUrlsFromProduct(product), [product]);
-  const pdpTabs = useMemo(
-    () => resolvePdpTabsFromProduct(product, { imageUrls: productImageUrls }),
-    [product, productImageUrls],
-  );
-  const keyIngredientsHero = useMemo(
-    () => pickKeyIngredientsHeroImage(product, product?.title),
-    [product],
-  );
-  const howToUseHero = useMemo(
-    () => pickHowToUseHeroImage(product, product?.title),
-    [product],
-  );
   const histogramTotal = useMemo(
     () => reviewState.histogram.reduce((a, h) => a + h.count, 0),
     [reviewState.histogram],
@@ -535,19 +503,6 @@ function ProductPage() {
   );
 
   useJudgeMeLoader(product?.id);
-
-  const productFaqJsonLd = useMemo(
-    () => ({
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: pdpTabs.faqs.map((f) => ({
-        "@type": "Question",
-        name: f.q,
-        acceptedAnswer: { "@type": "Answer", text: f.a },
-      })),
-    }),
-    [pdpTabs],
-  );
 
   // -------------------------------------------------------------------------
   // Early returns (loading / not found) — declared *after* all hooks above
@@ -584,10 +539,6 @@ function ProductPage() {
   return (
     <div className="min-h-screen bg-background">
       <ProductStructuredData product={product} />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(productFaqJsonLd) }}
-      />
       <Navbar />
 
       <div className="py-3 sm:py-6 lg:py-8 pb-40 lg:pb-10 overflow-x-hidden">
@@ -931,7 +882,7 @@ function ProductPage() {
                     Tax included • Free shipping ₹249+
                     <span className="hidden sm:inline">
                       {" "}
-                      • SKU: DARDGO-{handle?.toUpperCase().slice(0, 8)}
+                      • SKU: Atharva Health Solutions-{handle?.toUpperCase().slice(0, 8)}
                     </span>
                   </p>
                 </div>
@@ -1305,284 +1256,6 @@ function ProductPage() {
               </div>
             </ScrollReveal>
           )}
-
-          {/* ===== TABS SECTION ===== */}
-          <ScrollReveal className="mt-8 sm:mt-12">
-            <div className="border border-border/50 rounded-2xl overflow-hidden bg-card">
-              {/* Tab Headers — horizontal scroll on mobile with smaller pills */}
-              <div
-                className="flex overflow-x-auto scrollbar-hide border-b border-border/50 snap-x snap-mandatory sm:snap-none -mx-1 px-1 sm:mx-0 sm:px-0"
-                data-lenis-prevent
-              >
-                {TABS.map((tab) => (
-                  <button
-                    key={tab}
-                    onClick={() => setActiveTab(tab)}
-                    className={`flex-shrink-0 snap-start px-3.5 sm:px-5 py-3 sm:py-3.5 text-[11px] sm:text-sm font-semibold transition-all relative whitespace-nowrap tracking-wider ${
-                      activeTab === tab
-                        ? "text-primary bg-primary/5"
-                        : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
-                    }`}
-                  >
-                    {tab.toUpperCase()}
-                    {activeTab === tab && (
-                      <motion.div
-                        layoutId="activeTab"
-                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
-                      />
-                    )}
-                  </button>
-                ))}
-              </div>
-
-              {/* Tab Content */}
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeTab}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.2 }}
-                  className="p-4 sm:p-6 lg:p-8"
-                >
-                  {activeTab === "Key Ingredients" && (
-                    <div className="space-y-4 sm:space-y-6">
-                      {keyIngredientsHero && (
-                        <div className="flex justify-center">
-                          <div className="w-fit max-w-full rounded-2xl overflow-hidden border border-primary/15 bg-primary/5 shadow-sm">
-                            <img
-                              src={keyIngredientsHero.desktop.url}
-                              alt={keyIngredientsHero.desktop.altText}
-                              className="hidden lg:block w-auto max-w-full h-auto max-h-[min(70vh,560px)] bg-background"
-                              loading="lazy"
-                              width={1400}
-                              height={900}
-                            />
-                            <img
-                              src={keyIngredientsHero.mobile.url}
-                              alt={keyIngredientsHero.mobile.altText}
-                              className="block lg:hidden w-auto max-w-full h-auto max-h-[min(55vh,420px)] bg-background"
-                              loading="lazy"
-                              width={800}
-                              height={1200}
-                            />
-                          </div>
-                        </div>
-                      )}
-                      {pdpTabs.keyIngredients.length === 0 ? (
-                        <p className="text-sm text-muted-foreground">
-                          Ingredient highlights are not listed for this product online. Refer to the
-                          physical label for the full composition.
-                        </p>
-                      ) : (
-                        <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
-                          {pdpTabs.keyIngredients.map((ing) => (
-                            <div
-                              key={ing.name}
-                              className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl bg-primary/5 border border-primary/10"
-                            >
-                              <span className="text-2xl sm:text-3xl flex-shrink-0">{ing.emoji}</span>
-                              <div className="min-w-0">
-                                <h4 className="font-bold text-foreground text-sm sm:text-base mb-1">
-                                  {ing.name}
-                                </h4>
-                                <p className="text-[12px] sm:text-sm text-muted-foreground leading-relaxed">
-                                  {ing.desc}
-                                </p>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  )}
-
-                  {activeTab === "How to Use" && (
-                    <div className="space-y-4 sm:space-y-6">
-                      {howToUseHero && (
-                        <div className="flex justify-center">
-                          <div className="w-fit max-w-full rounded-2xl overflow-hidden border border-primary/15 bg-primary/5 shadow-sm">
-                            <img
-                              src={howToUseHero.url}
-                              alt={howToUseHero.altText}
-                              className="block w-auto max-w-full h-auto max-h-[min(70vh,520px)] bg-background"
-                              loading="lazy"
-                              width={1200}
-                              height={800}
-                            />
-                          </div>
-                        </div>
-                      )}
-                      <h3 className="text-base sm:text-lg font-bold text-foreground flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
-                        Directions for Use
-                      </h3>
-                      {pdpTabs.howToUseHtml?.trim() ? (
-                        <div
-                          className="product-description-html text-[13px] sm:text-sm break-words [overflow-wrap:anywhere]"
-                          dangerouslySetInnerHTML={{ __html: pdpTabs.howToUseHtml.trim() }}
-                        />
-                      ) : pdpTabs.howToUse.length === 0 ? (
-                        <p className="text-sm text-muted-foreground">
-                          Usage steps are not listed here. Follow the directions printed on your
-                          product packaging.
-                        </p>
-                      ) : (
-                        <ol className="space-y-2.5 sm:space-y-3">
-                          {pdpTabs.howToUse.map((step, i) => (
-                            <li key={i} className="flex items-start gap-2.5 sm:gap-3">
-                              <span className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-primary text-primary-foreground text-[11px] sm:text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
-                                {i + 1}
-                              </span>
-                              <p className="text-[13px] sm:text-sm text-muted-foreground leading-relaxed">
-                                {step}
-                              </p>
-                            </li>
-                          ))}
-                        </ol>
-                      )}
-                    </div>
-                  )}
-
-                  {activeTab === "Benefits" && (
-                    <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
-                      {pdpTabs.benefits.length === 0 ? (
-                        <p className="text-sm text-muted-foreground col-span-full">
-                          Benefit summaries are not listed for this SKU online.
-                        </p>
-                      ) : (
-                        pdpTabs.benefits.map((b, i) => (
-                          <div
-                            key={`${b.title}-${i}`}
-                            className="flex items-start gap-2.5 sm:gap-3 p-3 sm:p-4 rounded-xl bg-gradient-cream border border-border/30"
-                          >
-                            <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0 mt-0.5" />
-                            <div className="min-w-0">
-                              <h4 className="font-semibold text-foreground text-[13px] sm:text-sm mb-0.5">
-                                {b.title}
-                              </h4>
-                              <p className="text-[11.5px] sm:text-xs text-muted-foreground leading-relaxed">
-                                {b.desc}
-                              </p>
-                            </div>
-                          </div>
-                        ))
-                      )}
-                    </div>
-                  )}
-
-                  {activeTab === "Suitable For" && (
-                    <div className="space-y-2.5 sm:space-y-3">
-                      {pdpTabs.suitableFor.length === 0 ? (
-                        <p className="text-sm text-muted-foreground">
-                          Suitability notes are not listed for this product online.
-                        </p>
-                      ) : (
-                        pdpTabs.suitableFor.map((item, i) => (
-                          <div
-                            key={i}
-                            className="flex items-start gap-2.5 sm:gap-3 p-2.5 sm:p-3 rounded-lg bg-muted/40"
-                          >
-                            <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                              <CheckCircle2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-primary" />
-                            </span>
-                            <p className="text-[13px] sm:text-sm text-foreground leading-relaxed">
-                              {item}
-                            </p>
-                          </div>
-                        ))
-                      )}
-                      <p className="text-[11px] sm:text-xs text-muted-foreground italic mt-3 leading-relaxed">
-                        Consult a qualified healthcare professional to confirm suitability for your
-                        situation.
-                      </p>
-                    </div>
-                  )}
-
-                  {activeTab === "Storage & safety" && (
-                    <div className="grid sm:grid-cols-1 gap-4">
-                      {pdpTabs.storageSafety.length === 0 ? (
-                        <p className="text-sm text-muted-foreground">
-                          Storage and safety copy is not listed for this product online. See the
-                          label and package insert.
-                        </p>
-                      ) : (
-                        pdpTabs.storageSafety.map((row) => (
-                          <div
-                            key={row.title}
-                            className="rounded-xl border border-border/50 bg-muted/20 p-4 sm:p-5"
-                          >
-                            <h4 className="font-semibold text-foreground text-sm sm:text-base mb-2">
-                              {row.title}
-                            </h4>
-                            <p className="text-[13px] sm:text-sm text-muted-foreground leading-relaxed">
-                              {row.body}
-                            </p>
-                          </div>
-                        ))
-                      )}
-                      <p className="text-[11px] sm:text-xs text-muted-foreground">
-                        {FDA_STRUCTURED_CLAIM_DISCLAIMER}{" "}
-                        <Link
-                          to="/medical-disclaimer"
-                          className="font-medium text-primary hover:underline"
-                        >
-                          Full disclaimer
-                        </Link>
-                      </p>
-                    </div>
-                  )}
-
-                  {activeTab === "FAQs" && (
-                    <div className="space-y-2">
-                      {pdpTabs.faqs.length === 0 ? (
-                        <p className="text-sm text-muted-foreground">
-                          No FAQs for this product yet.
-                        </p>
-                      ) : (
-                        pdpTabs.faqs.map((faq, i) => (
-                          <div
-                            key={`faq-${i}`}
-                            className="border border-border/50 rounded-xl overflow-hidden"
-                          >
-                            <button
-                              type="button"
-                              onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                              className="w-full flex items-center justify-between gap-3 p-3.5 sm:p-4 text-left hover:bg-muted/30 transition-colors"
-                            >
-                              <span className="text-[13px] sm:text-sm font-medium text-foreground">
-                                {faq.q}
-                              </span>
-                              {openFaq === i ? (
-                                <ChevronUp className="w-4 h-4 text-muted-foreground flex-shrink-0" />
-                              ) : (
-                                <ChevronDown className="w-4 h-4 text-muted-foreground flex-shrink-0" />
-                              )}
-                            </button>
-                            <AnimatePresence>
-                              {openFaq === i && (
-                                <motion.div
-                                  initial={{ height: 0, opacity: 0 }}
-                                  animate={{ height: "auto", opacity: 1 }}
-                                  exit={{ height: 0, opacity: 0 }}
-                                  transition={{ duration: 0.2 }}
-                                  className="overflow-hidden"
-                                >
-                                  <p className="px-3.5 sm:px-4 pb-3.5 sm:pb-4 text-[12.5px] sm:text-sm text-muted-foreground leading-relaxed">
-                                    {faq.a}
-                                  </p>
-                                </motion.div>
-                              )}
-                            </AnimatePresence>
-                          </div>
-                        ))
-                      )}
-                    </div>
-                  )}
-                </motion.div>
-              </AnimatePresence>
-            </div>
-          </ScrollReveal>
 
           {/* ===== CUSTOMER REVIEWS ===== */}
           <ScrollReveal className="mt-8 sm:mt-12">
@@ -1960,7 +1633,7 @@ function ProductPage() {
                       </div>
                       <div className="flex min-h-0 flex-1 flex-col p-2.5 sm:p-3.5">
                         <p className="text-[9px] font-semibold uppercase tracking-wide text-muted-foreground mb-1">
-                          DARDGO
+                          Atharva Health Solutions
                         </p>
                         <h3
                           title={p.title}

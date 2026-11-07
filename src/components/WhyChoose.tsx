@@ -30,7 +30,7 @@ export function WhyChoose() {
           <div className="text-center mb-10 sm:mb-14 max-w-2xl mx-auto">
             <span className="text-eyebrow text-primary mb-4 block">— Why us</span>
             <h2 className="text-display-2 text-foreground mb-4">
-              Why choose <span className="text-gradient-green">DARDGO</span>
+              Why choose <span className="text-gradient-green">Atharva Health Solutions</span>
             </h2>
             <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
               Honest herbal wellness with premium packaging and responsive service.

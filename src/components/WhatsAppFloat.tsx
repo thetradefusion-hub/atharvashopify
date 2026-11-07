@@ -7,7 +7,7 @@ type WhatsAppFloatProps = {
 export function WhatsAppFloat({ className }: WhatsAppFloatProps) {
   return (
     <a
-      href="https://wa.me/919329912659?text=Hi%2C%20I%20want%20to%20order%20DARDGO%20products"
+      href="https://wa.me/919669361290?text=Hi%2C%20I%20want%20to%20order%20Atharva%20Health%20Solutions%20products"
       target="_blank"
       rel="noopener noreferrer"
       className={cn(

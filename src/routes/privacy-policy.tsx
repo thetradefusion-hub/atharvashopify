@@ -16,11 +16,11 @@ export const Route = createFileRoute("/privacy-policy")({
   component: PrivacyPolicyPage,
   head: () => ({
     meta: [
-      { title: "Privacy Policy | DARDGO" },
+      { title: "Privacy Policy | Atharva Health Solutions" },
       {
         name: "description",
         content:
-          "How Dardgo Pharma Private Limited collects, uses, and discloses personal information when you use dardgo.in and our store.",
+          "How Atharva Health Solutions collects, uses, and discloses personal information when you use atharvahealthsolutions.com and our store.",
       },
     ],
   }),

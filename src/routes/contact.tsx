@@ -4,27 +4,28 @@ import { Footer } from "@/components/Footer";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { MobileBottomNav } from "@/components/MobileBottomNav";
 import { ScrollReveal } from "@/components/ScrollReveal";
-import { Mail, Phone, MapPin, Clock, Facebook, Instagram, Youtube, Linkedin } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Globe } from "lucide-react";
 
 export const Route = createFileRoute("/contact")({
   component: ContactPage,
   head: () => ({
     meta: [
-      { title: "Contact DARDGO Pharma — Balaghat, MP | care@dardgo.in" },
+      {
+        title:
+          "Contact Atharva Health Solutions — Seoni, MP | support@atharvahealthsolutions.com",
+      },
       {
         name: "description",
         content:
-          "Get in touch with DardGo Pharma Pvt. Ltd. (dardgo.in) — Balaghat, Madhya Pradesh. Call +91 9329912659 or email care@dardgo.in. Available 9:00 AM to 9:00 PM.",
+          "Get in touch with Atharva Health Solutions (atharvahealthsolutions.com) — Seoni, Madhya Pradesh. Call +91 96693 61290 or email support@atharvahealthsolutions.com. Available 9:00 AM to 9:00 PM.",
       },
     ],
   }),
 });
 
 const socials = [
-  { name: "Facebook", href: "https://facebook.com/dardgo", Icon: Facebook },
-  { name: "Instagram", href: "https://instagram.com/dardgo", Icon: Instagram },
-  { name: "YouTube", href: "https://youtube.com/@dardgo", Icon: Youtube },
-  { name: "LinkedIn", href: "https://linkedin.com/company/dardgo", Icon: Linkedin },
+  { name: "Website", href: "https://www.atharvahealthsolutions.com", Icon: Globe },
+  { name: "Email", href: "mailto:support@atharvahealthsolutions.com", Icon: Mail },
 ];
 
 function ContactPage() {
@@ -39,7 +40,7 @@ function ContactPage() {
                 Get in Touch
               </span>
               <h1 className="text-3xl sm:text-5xl font-bold text-foreground mb-3 break-words">
-                Contact <span className="text-gradient-green">DardGo Pharma</span>
+                Contact <span className="text-gradient-green">Atharva Health Solutions</span>
               </h1>
               <p className="text-muted-foreground max-w-xl mx-auto">
                 Have questions about our Ayurvedic products? We&apos;d love to hear from you. Reach
@@ -55,15 +56,15 @@ function ContactPage() {
                 {
                   icon: Phone,
                   label: "Call us",
-                  value: "+91 93299 12659",
-                  href: "tel:+919329912659",
+                  value: "+91 96693 61290",
+                  href: "tel:+919669361290",
                   hint: "Mon – Sun, 9 AM – 9 PM",
                 },
                 {
                   icon: Mail,
                   label: "Email us",
-                  value: "care@dardgo.in",
-                  href: "mailto:care@dardgo.in",
+                  value: "support@atharvahealthsolutions.com",
+                  href: "mailto:support@atharvahealthsolutions.com",
                   hint: "Reply within 24 hours",
                 },
                 {
@@ -163,18 +164,16 @@ function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground">Visit our office</h3>
-                      <p className="text-xs text-muted-foreground">DardGo Pharma Pvt. Ltd.</p>
+                      <p className="text-xs text-muted-foreground">Atharva Health Solutions</p>
                     </div>
                   </div>
                   <address className="text-sm text-muted-foreground leading-relaxed not-italic mb-4">
-                    38/K, 33 Abdul Jabbar, Ward No. 09,
+                    Atharva Health Solution, Dunda Seoni,
                     <br />
-                    Mohan Marg, Dr Khan Gali,
-                    <br />
-                    Balaghat&nbsp;– 481001, Madhya Pradesh, India
+                    Seoni, Madhya Pradesh – 480661, India
                   </address>
                   <a
-                    href="https://maps.google.com/?q=DardGo+Pharma+Balaghat+Madhya+Pradesh"
+                    href="https://maps.google.com/?q=Dunda+Seoni,+Seoni,+Madhya+Pradesh+480661"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
@@ -187,7 +186,7 @@ function ContactPage() {
               {/* WhatsApp CTA */}
               <ScrollReveal delay={0.2}>
                 <a
-                  href="https://wa.me/919329912659?text=Hi%2C%20I%20have%20a%20question%20about%20DARDGO"
+                  href="https://wa.me/919669361290?text=Hi%2C%20I%20have%20a%20question%20about%20Atharva%20Health%20Solutions"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 p-5 rounded-3xl border border-border/30 bg-card hover:shadow-card-hover transition-all"
@@ -213,8 +212,8 @@ function ContactPage() {
               <ScrollReveal delay={0.3}>
                 <div className="rounded-3xl overflow-hidden border border-border/30 bg-gradient-cream h-56">
                   <iframe
-                    title="DardGo Pharma — Balaghat, Madhya Pradesh"
-                    src="https://www.google.com/maps?q=Balaghat,Madhya+Pradesh,India&output=embed"
+                    title="Atharva Health Solutions — Seoni, Madhya Pradesh"
+                    src="https://www.google.com/maps?q=Dunda+Seoni,Seoni,Madhya+Pradesh,480661&output=embed"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}

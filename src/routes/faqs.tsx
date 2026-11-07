@@ -104,7 +104,7 @@ export const Route = createFileRoute("/faqs")({
   component: FaqsPage,
   head: () => ({
     meta: [
-      { title: "FAQs | DARDGO" },
+      { title: "FAQs | Atharva Health Solutions" },
       {
         name: "description",
         content:

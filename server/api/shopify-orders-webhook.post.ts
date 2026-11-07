@@ -5,7 +5,7 @@
  * Shopify Admin → Settings → Notifications → Webhooks:
  *   Event: Order payment (orders/paid) — recommended
  *   Format: JSON
- *   URL: https://www.dardgo.in/api/shopify-orders-webhook
+ *   URL: https://www.atharvahealthsolutions.com/api/shopify-orders-webhook
  */
 import { defineEventHandler, getHeader, setResponseStatus, type H3Event } from "nitro/h3";
 import { getShopifyWebhookSecret } from "../lib/shopify-webhook";
