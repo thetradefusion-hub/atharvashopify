@@ -3,6 +3,8 @@
  * POST /api/razorpay-magic-complete
  * @see https://razorpay.com/docs/payments/magic-checkout/shopify/custom/web-integration-nextjs
  */
+import { defineEventHandler, readBody, setResponseStatus } from "nitro/h3";
+
 type CompleteBody = {
   razorpay_payment_id?: string;
   razorpay_order_id?: string;
@@ -27,37 +29,34 @@ function isEnabled(): boolean {
   return v === "1" || v === "true" || v === "yes";
 }
 
-export default async function handler(request: Request): Promise<Response> {
-  if (request.method !== "POST") {
-    return new Response(JSON.stringify({ error: "Method not allowed" }), { status: 405 });
-  }
-
+export default defineEventHandler(async (event) => {
   if (!isEnabled()) {
-    return new Response(
-      JSON.stringify({ error: "Razorpay Magic Checkout is disabled" }),
-      { status: 503 },
-    );
+    setResponseStatus(event, 503);
+    return { error: "Razorpay Magic Checkout is disabled" };
   }
 
   const keyId = getKeyId();
   if (!keyId) {
-    return new Response(JSON.stringify({ error: "Missing VITE_RAZORPAY_KEY_ID" }), {
-      status: 503,
-    });
+    setResponseStatus(event, 503);
+    return { error: "Missing VITE_RAZORPAY_KEY_ID" };
   }
 
   let body: CompleteBody;
   try {
-    body = (await request.json()) as CompleteBody;
+    body = (await readBody(event)) as CompleteBody;
   } catch {
-    return new Response(JSON.stringify({ error: "Invalid JSON body" }), { status: 400 });
+    setResponseStatus(event, 400);
+    return { error: "Invalid JSON body" };
+  }
+
+  if (!body || typeof body !== "object") {
+    setResponseStatus(event, 400);
+    return { error: "Invalid JSON body" };
   }
 
   if (!body.razorpay_payment_id || !body.razorpay_order_id) {
-    return new Response(
-      JSON.stringify({ error: "razorpay_payment_id and razorpay_order_id are required" }),
-      { status: 400 },
-    );
+    setResponseStatus(event, 400);
+    return { error: "razorpay_payment_id and razorpay_order_id are required" };
   }
 
   try {
@@ -83,23 +82,18 @@ export default async function handler(request: Request): Promise<Response> {
 
     if (!res.ok) {
       const errObj = data.error as { description?: string } | undefined;
-      return new Response(
-        JSON.stringify({
-          error: "Failed to complete Magic Checkout",
-          detail: errObj?.description || (data.message as string) || raw.slice(0, 400),
-        }),
-        { status: 502 },
-      );
+      setResponseStatus(event, 502);
+      return {
+        error: "Failed to complete Magic Checkout",
+        detail: errObj?.description || (data.message as string) || raw.slice(0, 400),
+      };
     }
 
-    return new Response(JSON.stringify(data), {
-      headers: {
-        "Content-Type": "application/json",
-        "Cache-Control": "no-store",
-      },
-    });
+    setResponseStatus(event, 200);
+    return data;
   } catch (err) {
     const message = err instanceof Error ? err.message : "Magic Checkout complete failed";
-    return new Response(JSON.stringify({ error: message }), { status: 500 });
+    setResponseStatus(event, 500);
+    return { error: message };
   }
-}
+});

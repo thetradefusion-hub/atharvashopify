@@ -3,6 +3,8 @@
  * POST /api/razorpay-magic-start
  * @see https://razorpay.com/docs/payments/magic-checkout/shopify/custom/web-integration-nextjs
  */
+import { defineEventHandler, readBody, setResponseStatus } from "nitro/h3";
+
 type MagicCartBody = {
   cart?: {
     token?: string;
@@ -66,41 +68,37 @@ async function razorpayPost<T>(
   return { ok: res.ok, status: res.status, data, raw };
 }
 
-export default async function handler(request: Request): Promise<Response> {
-  if (request.method !== "POST") {
-    return new Response(JSON.stringify({ error: "Method not allowed" }), { status: 405 });
-  }
-
+export default defineEventHandler(async (event) => {
   if (!isEnabled()) {
-    return new Response(
-      JSON.stringify({ error: "Razorpay Magic Checkout is disabled" }),
-      { status: 503 },
-    );
+    setResponseStatus(event, 503);
+    return { error: "Razorpay Magic Checkout is disabled" };
   }
 
   const keyId = getKeyId();
   if (!keyId) {
-    return new Response(
-      JSON.stringify({
-        error: "Missing VITE_RAZORPAY_KEY_ID (Razorpay Dashboard → API Keys → Key Id)",
-      }),
-      { status: 503 },
-    );
+    setResponseStatus(event, 503);
+    return {
+      error: "Missing VITE_RAZORPAY_KEY_ID (Razorpay Dashboard → API Keys → Key Id)",
+    };
   }
 
   let body: MagicCartBody;
   try {
-    body = (await request.json()) as MagicCartBody;
+    body = (await readBody(event)) as MagicCartBody;
   } catch {
-    return new Response(JSON.stringify({ error: "Invalid JSON body" }), { status: 400 });
+    setResponseStatus(event, 400);
+    return { error: "Invalid JSON body" };
+  }
+
+  if (!body || typeof body !== "object") {
+    setResponseStatus(event, 400);
+    return { error: "Invalid JSON body" };
   }
 
   const cart = body.cart;
   if (!cart?.token || !Array.isArray(cart.items) || cart.items.length === 0) {
-    return new Response(
-      JSON.stringify({ error: "cart.token and cart.items are required" }),
-      { status: 400 },
-    );
+    setResponseStatus(event, 400);
+    return { error: "cart.token and cart.items are required" };
   }
 
   const cartPayload = {
@@ -132,13 +130,8 @@ export default async function handler(request: Request): Promise<Response> {
         checkout.data.message ||
         checkout.raw.slice(0, 400) ||
         `HTTP ${checkout.status}`;
-      return new Response(
-        JSON.stringify({
-          error: "Failed to create Magic Checkout id",
-          detail,
-        }),
-        { status: 502 },
-      );
+      setResponseStatus(event, 502);
+      return { error: "Failed to create Magic Checkout id", detail };
     }
 
     const sourceUrl = body.source_url || undefined;
@@ -170,31 +163,20 @@ export default async function handler(request: Request): Promise<Response> {
         order.data.message ||
         order.raw.slice(0, 400) ||
         `HTTP ${order.status}`;
-      return new Response(
-        JSON.stringify({
-          error: "Failed to create Razorpay order",
-          detail,
-        }),
-        { status: 502 },
-      );
+      setResponseStatus(event, 502);
+      return { error: "Failed to create Razorpay order", detail };
     }
 
-    return new Response(
-      JSON.stringify({
-        order_id: order.data.order_id,
-        shopify_checkout_id: checkout.data.shopify_checkout_id,
-        key_id: keyId,
-        coupon_code: body.coupon_code || null,
-      }),
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "Cache-Control": "no-store",
-        },
-      },
-    );
+    setResponseStatus(event, 200);
+    return {
+      order_id: order.data.order_id,
+      shopify_checkout_id: checkout.data.shopify_checkout_id,
+      key_id: keyId,
+      coupon_code: body.coupon_code || null,
+    };
   } catch (err) {
     const message = err instanceof Error ? err.message : "Magic Checkout start failed";
-    return new Response(JSON.stringify({ error: message }), { status: 500 });
+    setResponseStatus(event, 500);
+    return { error: message };
   }
-}
+});
