@@ -24,7 +24,9 @@ export function CollectionShowcases() {
     async function load() {
       try {
         const sections = await Promise.all(
-          CATALOG_SECTIONS.map((s) => fetchCatalogProducts(s.products, 8)),
+          // No store-wide fallback here — only show sections that have matching handles
+          // (Customer Favourites already falls back via ProductShowcase).
+          CATALOG_SECTIONS.map((s) => fetchCatalogProducts(s.products, 8, { fallbackToStore: false })),
         );
         if (!cancelled) setBySection(sections);
       } finally {

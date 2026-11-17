@@ -26,6 +26,18 @@ const SHIPROCKET_JS = "https://fastrr-boost-ui.pickrr.com/assets/js/channels/sho
 const rawSeller =
   (import.meta.env.VITE_SHIPROCKET_SELLER_DOMAIN as string | undefined)?.trim() ?? "";
 
+/**
+ * Explicit opt-in. Having only VITE_SHIPROCKET_SELLER_DOMAIN set is not enough —
+ * Fastrr must be installed & mapped for THIS shop, otherwise buyDirect lands on
+ * `/cart/VARIANT:qty?attributes[fastrr_…]` and Shopify shows "Link no longer exists".
+ */
+const SHIPROCKET_ENABLED = (() => {
+  const v = (import.meta.env.VITE_SHIPROCKET_CHECKOUT_ENABLED as string | undefined)
+    ?.trim()
+    .toLowerCase();
+  return v === "1" || v === "true" || v === "yes";
+})();
+
 function normalizeSellerDomain(value: string): string {
   return value
     .trim()
@@ -36,7 +48,7 @@ function normalizeSellerDomain(value: string): string {
 const SELLER_DOMAIN = normalizeSellerDomain(rawSeller);
 
 export function isShiprocketCheckoutConfigured(): boolean {
-  return Boolean(SELLER_DOMAIN);
+  return SHIPROCKET_ENABLED && Boolean(SELLER_DOMAIN);
 }
 
 export function getShiprocketSellerDomain(): string {

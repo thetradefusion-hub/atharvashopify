@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Droplets, Pill, Sparkles, Leaf, FlaskConical, Candy } from "lucide-react";
+import { Droplets, Pill, Flower2, Leaf, FlaskConical, Candy } from "lucide-react";
 import { CATALOG_SECTIONS } from "@/lib/product-catalog";
 
 const iconBySection: Record<string, typeof Droplets> = {
@@ -7,7 +7,7 @@ const iconBySection: Record<string, typeof Droplets> = {
   "joint-mobility": Pill,
   "immunity-wellness": Candy,
   "digestive-wellness": FlaskConical,
-  "beauty-personal-care": Sparkles,
+  "beauty-personal-care": Flower2,
   "health-wellness-support": Leaf,
 };
 
@@ -25,8 +25,8 @@ export function CategoryIcons() {
                 params={{ handle: cat.collectionHandle }}
                 className="flex flex-col items-center gap-2 min-w-[72px] sm:min-w-[90px] group"
               >
-                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border-2 border-primary/20 bg-primary/5 flex items-center justify-center group-hover:bg-primary/10 group-hover:border-primary/40 transition-all duration-300 group-hover:scale-105">
-                  <Icon className="w-6 h-6 sm:w-7 sm:h-7 text-primary" />
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border-2 border-primary/20 bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center group-hover:from-primary/15 group-hover:to-primary/10 group-hover:border-primary/45 shadow-sm group-hover:shadow-md transition-all duration-300 group-hover:scale-105">
+                  <Icon className="w-6 h-6 sm:w-7 sm:h-7 text-primary" strokeWidth={2.1} />
                 </div>
                 <span className="text-[10px] sm:text-xs font-semibold text-foreground/70 text-center leading-tight group-hover:text-primary transition-colors max-w-[88px]">
                   {cat.title}

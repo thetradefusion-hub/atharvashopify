@@ -3,13 +3,15 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
+  Bone,
   BookOpen,
   Calendar,
   Clock,
   Flame,
+  FlaskConical,
+  Flower2,
   Leaf,
   Search,
-  Sparkles,
   Tag,
   TrendingUp,
 } from "lucide-react";
@@ -37,7 +39,7 @@ const categoryStyles: Record<BlogCategory, { gradient: string; chip: string; ico
     "Joint Care": {
       gradient: "from-orange-400/30 via-orange-500/20 to-amber-600/30",
       chip: "bg-orange-500/10 text-orange-700",
-      icon: Sparkles,
+      icon: Bone,
     },
     Lifestyle: {
       gradient: "from-amber-300/30 via-yellow-400/20 to-orange-500/30",
@@ -47,7 +49,7 @@ const categoryStyles: Record<BlogCategory, { gradient: string; chip: string; ico
     "Pain Relief": {
       gradient: "from-rose-400/30 via-pink-500/20 to-red-500/30",
       chip: "bg-rose-500/10 text-rose-700",
-      icon: Sparkles,
+      icon: Flame,
     },
     Immunity: {
       gradient: "from-green-500/30 via-emerald-600/20 to-teal-700/30",
@@ -57,12 +59,12 @@ const categoryStyles: Record<BlogCategory, { gradient: string; chip: string; ico
     Ingredients: {
       gradient: "from-yellow-400/30 via-amber-500/20 to-orange-600/30",
       chip: "bg-yellow-500/10 text-yellow-800",
-      icon: Sparkles,
+      icon: FlaskConical,
     },
     Beauty: {
       gradient: "from-pink-400/30 via-rose-500/20 to-fuchsia-500/30",
       chip: "bg-pink-500/10 text-pink-700",
-      icon: Sparkles,
+      icon: Flower2,
     },
   };
 
@@ -316,7 +318,7 @@ function BlogPage() {
             <div className="absolute -bottom-12 -left-12 w-48 h-48 sm:w-56 sm:h-56 rounded-full bg-brand-green-light/15 blur-3xl pointer-events-none" />
             <div className="relative max-w-2xl">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-brand-yellow text-[11px] sm:text-xs font-semibold mb-3 sm:mb-4">
-                <Sparkles className="w-3.5 h-3.5" />
+                <Leaf className="w-3.5 h-3.5" strokeWidth={2.4} aria-hidden />
                 Free weekly health tips
               </span>
               <h3 className="text-xl sm:text-3xl font-bold mb-2.5 sm:mb-3 leading-tight">

@@ -590,13 +590,10 @@ export interface CartItem {
 }
 
 function formatCheckoutUrl(checkoutUrl: string): string {
-  try {
-    const url = new URL(checkoutUrl);
-    url.searchParams.set("channel", "online_store");
-    return url.toString();
-  } catch {
-    return checkoutUrl;
-  }
+  // Return Storefront Cart API checkoutUrl as-is. Forcing `channel=online_store`
+  // breaks headless / Checkout Extensibility stores and can surface
+  // "Link no longer exists" on myshopify.com cart permalinks.
+  return checkoutUrl;
 }
 
 function isCartNotFoundError(

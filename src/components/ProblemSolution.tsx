@@ -1,4 +1,4 @@
-import { X, Check, Sparkles } from "lucide-react";
+import { X, Check, Leaf } from "lucide-react";
 import { ScrollReveal } from "@/components/ScrollReveal";
 
 const problems = [
@@ -31,7 +31,7 @@ export function ProblemSolution() {
         <ScrollReveal>
           <div className="mx-auto max-w-2xl text-center mb-8 sm:mb-10">
             <span className="text-eyebrow text-primary mb-2 inline-flex items-center justify-center gap-1.5">
-              <Sparkles className="w-3 h-3 opacity-80" aria-hidden />
+              <Leaf className="w-3.5 h-3.5 opacity-90" strokeWidth={2.4} aria-hidden />
               Honest retail
             </span>
             <h2 className="text-display-3 text-foreground mb-3 tracking-tight">

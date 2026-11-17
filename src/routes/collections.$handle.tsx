@@ -15,6 +15,7 @@ import {
 import {
   COLLECTION_PAGE_TITLES,
   favouritesAllHandles,
+  fetchAnyStorefrontProducts,
   fetchProductsByHandles,
   getCatalogSectionByHandle,
   isCatalogCollectionHandle,
@@ -89,7 +90,11 @@ function CollectionPage() {
             handle === "customer-favourites"
               ? favouritesAllHandles()
               : sectionAllHandles(getCatalogSectionByHandle(handle)!);
-          const catalogProducts = await fetchProductsByHandles(list);
+          let catalogProducts = await fetchProductsByHandles(list);
+          // Favourites: if curated handles miss (e.g. store rebrand), show live catalogue.
+          if (catalogProducts.length === 0 && handle === "customer-favourites") {
+            catalogProducts = await fetchAnyStorefrontProducts(24);
+          }
           if (!cancelled) setProducts(catalogProducts);
           return;
         }

@@ -6,6 +6,7 @@ import { ScrollProgress } from "@/components/ScrollProgress";
 import { PwaInstallPrompt } from "@/components/PwaInstallPrompt";
 import { SiteStructuredData } from "@/components/SiteStructuredData";
 import { ShiprocketCheckoutBootstrap } from "@/components/ShiprocketCheckoutBootstrap";
+import { RazorpayMagicCheckoutBootstrap } from "@/components/RazorpayMagicCheckoutBootstrap";
 import { MetaPixel } from "@/components/MetaPixel";
 import { DEFAULT_META_DESCRIPTION, DEFAULT_PAGE_TITLE } from "@/lib/compliance";
 import { isMetaPixelEnabled, META_PIXEL_ID } from "@/lib/meta-pixel";
@@ -117,6 +118,7 @@ function RootComponent() {
   return (
     <>
       <ShiprocketCheckoutBootstrap />
+      <RazorpayMagicCheckoutBootstrap />
       <MetaPixel />
       <SiteStructuredData />
       <SmoothScrollProvider />

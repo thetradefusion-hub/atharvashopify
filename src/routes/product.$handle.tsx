@@ -21,7 +21,6 @@ import {
   RotateCcw,
   Zap,
   ThumbsUp,
-  Sparkles,
   X,
   ChevronLeft,
   ChevronRight,
@@ -48,6 +47,7 @@ import {
   shiprocketBuyDirect,
   shopifyVariantGidToNumericId,
 } from "@/lib/shiprocket-checkout";
+import { isRazorpayMagicCheckoutConfigured } from "@/lib/razorpay-magic-checkout";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
@@ -295,6 +295,16 @@ function ProductPage() {
     if (!product) return;
     const v = product.variants.edges[selectedVariant]?.node;
     if (!v || v.availableForSale === false) return;
+    if (isRazorpayMagicCheckoutConfigured()) {
+      await handleAddToCart();
+      const { cartId, items } = useCartStore.getState();
+      if (!cartId || items.length === 0) {
+        toast.error("Could not prepare cart for Magic Checkout.");
+        return;
+      }
+      window.location.assign("/checkout");
+      return;
+    }
     if (isShiprocketCheckoutConfigured()) {
       try {
         await shiprocketBuyDirect(buildShiprocketProductPayload(v.id, quantity));
@@ -304,7 +314,16 @@ function ProductPage() {
       }
       return;
     }
+    // Native Shopify Checkout (Storefront Cart API) — used when Magic/Fastrr are off.
     await handleAddToCart();
+    const url = useCartStore.getState().getCheckoutUrl();
+    if (url) {
+      window.location.assign(url);
+      return;
+    }
+    toast.message("Added to cart", {
+      description: "Open cart to complete checkout.",
+    });
   };
 
   // Add the FBT bundle (this product + every selected recommended product)
@@ -618,7 +637,7 @@ function ProductPage() {
                         </span>
                       )}
                       <span className="inline-flex items-center gap-1 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-brand-yellow text-foreground text-[10px] sm:text-[11px] font-bold shadow-md">
-                        <Sparkles className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
+                        <Award className="w-2.5 h-2.5 sm:w-3 sm:h-3" strokeWidth={2.4} />
                         Bestseller
                       </span>
                       <span className="hidden sm:inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur text-foreground text-[11px] font-bold shadow-md border border-border/40">
@@ -712,7 +731,7 @@ function ProductPage() {
                         </span>
                       )}
                       <span className="inline-flex items-center gap-1 rounded-full bg-brand-yellow px-2 py-0.5 text-[10px] font-bold text-foreground shadow-md">
-                        <Sparkles className="h-2.5 w-2.5" />
+                        <Award className="h-2.5 w-2.5" strokeWidth={2.4} />
                         Bestseller
                       </span>
                     </div>
@@ -1044,7 +1063,7 @@ function ProductPage() {
             <ScrollReveal className="mt-8 sm:mt-12 lg:mt-14">
               <div className="rounded-2xl border border-border/50 bg-card p-4 sm:p-6 lg:p-7">
                 <div className="flex items-center gap-2 mb-1">
-                  <Sparkles className="w-4 h-4 text-brand-yellow" />
+                  <Package className="w-4 h-4 text-brand-yellow" strokeWidth={2.2} aria-hidden />
                   <span className="text-eyebrow text-primary">— Bundle & save</span>
                 </div>
                 <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground mb-4 sm:mb-5 font-display">

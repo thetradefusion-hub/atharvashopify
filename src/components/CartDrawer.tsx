@@ -13,7 +13,9 @@ import {
 import { ShoppingCart, Minus, Plus, Trash2, ExternalLink, Loader2 } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
 import { isShiprocketCheckoutConfigured } from "@/lib/shiprocket-checkout";
+import { isRazorpayMagicCheckoutConfigured } from "@/lib/razorpay-magic-checkout";
 import { BuyNowShiprocketBar } from "@/components/BuyNowShiprocketBar";
+import { toast } from "sonner";
 
 export function CartDrawer() {
   const navigate = useNavigate();
@@ -34,18 +36,21 @@ export function CartDrawer() {
     if (isOpen) syncCart();
   }, [isOpen, syncCart]);
 
-  const handleCheckout = () => {
+  const handleCheckout = async () => {
     if (items.length === 0) return;
-    if (isShiprocketCheckoutConfigured()) {
+    if (isRazorpayMagicCheckoutConfigured() || isShiprocketCheckoutConfigured()) {
       navigate({ to: "/checkout" });
       setIsOpen(false);
       return;
     }
-    const checkoutUrl = getCheckoutUrl();
+    await syncCart();
+    const checkoutUrl = useCartStore.getState().getCheckoutUrl() || getCheckoutUrl();
     if (checkoutUrl) {
-      window.open(checkoutUrl, "_blank");
+      window.location.assign(checkoutUrl);
       setIsOpen(false);
+      return;
     }
+    toast.error("Checkout link unavailable. Please try again in a moment.");
   };
 
   return (

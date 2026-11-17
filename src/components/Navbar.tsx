@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "@tanstack/react-router";
-import { Menu, X, ChevronDown, Search, Heart, Sparkles, User, PackageSearch } from "lucide-react";
+import { Menu, X, ChevronDown, Search, Heart, Leaf, User } from "lucide-react";
 import { CartDrawer } from "@/components/CartDrawer";
 import { SearchDrawer } from "@/components/SearchDrawer";
 import { motion, AnimatePresence } from "framer-motion";
@@ -22,8 +22,6 @@ const navLinks = [
   { label: "Bulk Order", to: "/bulk-order" as const },
   { label: "Contact", to: "/contact" as const },
 ];
-
-const TRACK_ORDER_URL = "https://dardgo.shiprocket.co/tracking/";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -74,7 +72,7 @@ export function Navbar() {
               key={i}
               className="text-[11px] sm:text-xs font-medium inline-flex items-center gap-3 tracking-wide"
             >
-              <Sparkles className="w-3 h-3 text-brand-yellow" />
+              <Leaf className="w-3 h-3 text-brand-yellow" strokeWidth={2.4} aria-hidden />
               {a}
               <span className="w-1 h-1 rounded-full bg-brand-yellow-light/60 inline-block" />
             </span>
@@ -234,14 +232,6 @@ export function Navbar() {
                   )}
                 </Link>
               ))}
-              <a
-                href={TRACK_ORDER_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-5 py-2.5 text-[15px] font-semibold text-foreground/70 hover:text-foreground rounded-full transition-colors"
-              >
-                Track order
-              </a>
             </nav>
 
             {/* Right icons */}
@@ -316,17 +306,6 @@ export function Navbar() {
                     {link.label}
                   </Link>
                 ))}
-                <a
-                  href={TRACK_ORDER_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setMobileOpen(false)}
-                  className="text-base font-semibold py-3 px-4 text-foreground rounded-2xl hover:bg-primary/5 hover:text-primary transition-colors flex items-center gap-2"
-                >
-                  <PackageSearch className="w-4 h-4 shrink-0" aria-hidden />
-                  Track order
-                </a>
-
                 <Link
                   to="/account"
                   onClick={() => setMobileOpen(false)}

@@ -11,6 +11,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { toast } from "sonner";
 import { isShiprocketCheckoutConfigured } from "@/lib/shiprocket-checkout";
+import { isRazorpayMagicCheckoutConfigured } from "@/lib/razorpay-magic-checkout";
 
 export const Route = createFileRoute("/cart")({
   component: CartPage,
@@ -36,17 +37,23 @@ function CartPage() {
   const [coupon, setCoupon] = useState("");
   const freeShipping = totalPrice >= 249;
 
-  const handleCheckout = () => {
+  const handleCheckout = async () => {
     if (items.length === 0) return;
-    if (isShiprocketCheckoutConfigured()) {
+    if (isRazorpayMagicCheckoutConfigured() || isShiprocketCheckoutConfigured()) {
       navigate({
         to: "/checkout",
         state: { checkoutCoupon: coupon.trim() || undefined },
       });
       return;
     }
-    const url = getCheckoutUrl();
-    if (url) window.open(url, "_blank");
+    const { syncCart } = useCartStore.getState();
+    await syncCart();
+    const url = useCartStore.getState().getCheckoutUrl() || getCheckoutUrl();
+    if (url) {
+      window.location.assign(url);
+      return;
+    }
+    toast.error("Checkout link unavailable. Please try again in a moment.");
   };
 
   return (

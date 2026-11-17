@@ -1,0 +1,160 @@
+{
+  "_comment": "Scraped via Firecrawl from https://vaidyadeepayurveda.com/products (2026-11-12). Image URLs are direct Supabase CDN links.",
+  "source": "https://vaidyadeepayurveda.com/products",
+  "collections": [
+    {
+      "handle": "all-products",
+      "title": "All Products",
+      "description": "Complete Vaidyadeep Ayurveda catalogue seeded for Atharva Health Solutions."
+    },
+    {
+      "handle": "immunity",
+      "title": "Immunity",
+      "description": "Ayurvedic immunity and memory support formulations."
+    },
+    {
+      "handle": "vitality",
+      "title": "Vitality",
+      "description": "Stamina, energy and Rasayana support."
+    },
+    {
+      "handle": "skin-hair",
+      "title": "Skin & Hair",
+      "description": "Classical Ayurvedic oils for skin radiance and hair strength."
+    }
+  ],
+  "products": [
+    {
+      "handle": "balbuddhi-swarnaprashan",
+      "title": "Balbuddhi Swarnaprashan",
+      "description": "Ayurvedic immunity and memory booster drops for kids.",
+      "descriptionHtml": "<h3>Ayurvedic Immunity &amp; Memory Booster for Kids</h3><p><strong>Vaidyadeep Balbuddhi Swarn Prashan Drops</strong> is a time-tested Ayurvedic formulation designed to support physical growth, sharpen intellect, and build robust immunity in children aged 0 to 16 years.</p><h4>Key Benefits:</h4><ul><li><strong>Boosts Immune System:</strong> Helps build natural defense mechanisms against common infections.</li><li><strong>Sharpens Memory &amp; Mental Health:</strong> Formulated with Brahmi and Shankhpushpi to support focus, learning capacity, and cognitive clarity.</li><li><strong>Improves Digestion &amp; Appetite:</strong> Aids nutrient absorption and supports digestive health for holistic physical growth.</li><li><strong>Enhances Skin Tone &amp; Overall Vitality:</strong> Tones the skin and nurtures general wellbeing.</li></ul><h4>Composition (Each 10 ml Contains):</h4><ul><li><strong>Swarna Bhasma (A.S.S.):</strong> 7 mg</li><li><strong>Brahmi (Bacopa monnieri):</strong> 1 gm</li><li><strong>Shankhpushpi (Convolvulus pluricaulis):</strong> 1 mg</li><li><strong>Vacha (Acorus calamus):</strong> 2 gm</li><li><strong>Baheda (Terminalia bellirica):</strong> 9 gm</li><li><strong>Guduchi Satwa (Tinospora cordifolia):</strong> 10 mg</li><li><strong>Kukkum / Saffron (Crocus sativus):</strong> 8 mg</li><li><strong>Cow Ghee:</strong> 162 mg</li><li><strong>Honey:</strong> 200 mg</li><li><strong>Syrup Base:</strong> Q.S.</li></ul><h4>Dosage Instructions:</h4><ul><li><strong>0 to 5 years:</strong> 1 drop daily</li><li><strong>5 to 10 years:</strong> 2 drops daily</li><li><strong>10 to 16 years:</strong> 3 drops daily</li></ul><p><strong>Manufacturer:</strong> Jantayu Panchgavya Research Ayurveda Sushrut Nilayam, Jabalpur<br/><strong>Shelf Life:</strong> 24 months from manufacturing<br/><strong>Form:</strong> Drops<br/><strong>SKU:</strong> VD-SWARN-030</p>",
+      "vendor": "Vaidyadeep Ayurveda",
+      "productType": "Drops",
+      "sku": "VD-SWARN-030",
+      "tags": [
+        "best-seller",
+        "ayush-approved",
+        "immunity",
+        "kids",
+        "swarnaprashan",
+        "vaidyadeep",
+        "immunity-support",
+        "brahmi"
+      ],
+      "price": 1900,
+      "compareAtPrice": 2199,
+      "available": true,
+      "inventoryQuantity": 50,
+      "imageUrls": [
+        "https://hpyjwbmpmfcrsxxxfblm.supabase.co/storage/v1/object/public/media/products/30.png",
+        "https://hpyjwbmpmfcrsxxxfblm.supabase.co/storage/v1/object/public/media/products/35.png",
+        "https://hpyjwbmpmfcrsxxxfblm.supabase.co/storage/v1/object/public/media/products/32.png",
+        "https://hpyjwbmpmfcrsxxxfblm.supabase.co/storage/v1/object/public/media/products/28.png",
+        "https://hpyjwbmpmfcrsxxxfblm.supabase.co/storage/v1/object/public/media/products/29.png",
+        "https://hpyjwbmpmfcrsxxxfblm.supabase.co/storage/v1/object/public/media/products/bb.png"
+      ],
+      "collections": ["all-products", "immunity"],
+      "sourceUrl": "https://vaidyadeepayurveda.com/products/balbuddhi-swarnaprashan"
+    },
+    {
+      "handle": "himalayan-shilajit-gold-plus-resin",
+      "title": "Himalayan Shilajit Gold Plus Resin",
+      "description": "Himalayan resin with Ashwagandha for stamina & energy",
+      "descriptionHtml": "<p>Vaidyadeep Himalayan Shilajit Gold Plus Resin is a stamina and vitality formula built on pure Himalayan Shilajit, a mineral-rich resin used in Ayurveda for centuries as a Rasayana (rejuvenator).</p><p>The \"Gold Plus\" blend adds Swarna Bhasma along with Ashwagandha, Gokshura, Kali Musli, Haldi, Coffee extract and Elaichi. Together they support daily energy, stamina, strength and recovery, while Ashwagandha helps the body manage stress.</p><p>Made for active adults, gym-goers and anyone who wants steady energy through a busy day. Just a grain-sized amount, dissolved in warm water or milk, once a day.</p><p><strong>Manufacturer:</strong> Jantayu Panchgavya Research Ayurveda Sushrut Nilayam, Jabalpur<br/><strong>Shelf Life:</strong> 24 months from manufacturing<br/><strong>SKU:</strong> VD-SHJ-020</p>",
+      "vendor": "Vaidyadeep Ayurveda",
+      "productType": "Resin",
+      "sku": "VD-SHJ-020",
+      "tags": [
+        "best-seller",
+        "ayush-approved",
+        "vitality",
+        "shilajit",
+        "ashwagandha",
+        "vaidyadeep",
+        "stamina",
+        "energy"
+      ],
+      "price": 2000,
+      "compareAtPrice": 2499,
+      "available": true,
+      "inventoryQuantity": 50,
+      "imageUrls": [
+        "https://hpyjwbmpmfcrsxxxfblm.supabase.co/storage/v1/object/public/media/products/6-muyngne3.png",
+        "https://hpyjwbmpmfcrsxxxfblm.supabase.co/storage/v1/object/public/media/products/7-muyngmsm.png",
+        "https://hpyjwbmpmfcrsxxxfblm.supabase.co/storage/v1/object/public/media/products/4-muyngn9w.png",
+        "https://hpyjwbmpmfcrsxxxfblm.supabase.co/storage/v1/object/public/media/products/8-muyngnc9.png",
+        "https://hpyjwbmpmfcrsxxxfblm.supabase.co/storage/v1/object/public/media/products/2-muyngna0.png",
+        "https://hpyjwbmpmfcrsxxxfblm.supabase.co/storage/v1/object/public/media/products/3.png",
+        "https://hpyjwbmpmfcrsxxxfblm.supabase.co/storage/v1/object/public/media/products/5-muyngni5.png"
+      ],
+      "collections": ["all-products", "vitality"],
+      "sourceUrl": "https://vaidyadeepayurveda.com/products/himalayan-shilajit-gold-plus-resin"
+    },
+    {
+      "handle": "keshtune-ayurvedic-hair-oil",
+      "title": "Keshtune Ayurvedic Hair Oil",
+      "description": "Bhringraj & Amla for stronger, softer, silkier hair",
+      "descriptionHtml": "<p>Keshtune (केशट्यून तेल) is an Ayurvedic hair oil by Vaidyadeep Ayurveda, made for dry, damaged and breakage-prone hair. Hair damage is more than split ends. Weak roots, a dry scalp and brittle strands all play a part, so Keshtune works on the scalp and the hair together.</p><p>The formula blends 13 classical Ayurvedic herbs in a base of pure Til Tail (sesame oil). Bhringraj (Eclipta alba), the herb Ayurveda calls the \"king of hair,\" leads the blend. Amla, Hibiscus (Jaswant), Shikakai and Neem support it, and Rose, Ushir and Kapoor add a light, fresh fragrance.</p><p>Regular massage with Keshtune nourishes the hair roots, helps cleanse the scalp, improves softness and shine, and helps reduce hair fall caused by breakage. The result is hair that feels stronger, smoother and easier to manage.</p><p>Suitable for men and women and for all hair types. For external use only.</p><p><strong>Manufacturer:</strong> Jantayu Panchgavya Research Ayurveda Sushrut Nilayam, Jabalpur<br/><strong>Shelf Life:</strong> 24 months from manufacturing<br/><strong>Form:</strong> Oil<br/><strong>SKU:</strong> VD-KST-100</p>",
+      "vendor": "Vaidyadeep Ayurveda",
+      "productType": "Hair Oil",
+      "sku": "VD-KST-100",
+      "tags": [
+        "best-seller",
+        "ayush-approved",
+        "skin-hair",
+        "hair-oil",
+        "bhringraj",
+        "amla",
+        "vaidyadeep",
+        "hair-fall"
+      ],
+      "price": 700,
+      "compareAtPrice": 999,
+      "available": true,
+      "inventoryQuantity": 50,
+      "imageUrls": [
+        "https://hpyjwbmpmfcrsxxxfblm.supabase.co/storage/v1/object/public/media/products/48.png",
+        "https://hpyjwbmpmfcrsxxxfblm.supabase.co/storage/v1/object/public/media/products/49.png",
+        "https://hpyjwbmpmfcrsxxxfblm.supabase.co/storage/v1/object/public/media/products/k.png",
+        "https://hpyjwbmpmfcrsxxxfblm.supabase.co/storage/v1/object/public/media/products/51.png",
+        "https://hpyjwbmpmfcrsxxxfblm.supabase.co/storage/v1/object/public/media/products/52.png"
+      ],
+      "collections": ["all-products", "skin-hair"],
+      "sourceUrl": "https://vaidyadeepayurveda.com/products/keshtune-ayurvedic-hair-oil"
+    },
+    {
+      "handle": "kumkumadi-glow-face-oil",
+      "title": "Kumkumadi Glow Face Oil",
+      "description": "Saffron-rich Ayurvedic oil for radiant, even-toned skin",
+      "descriptionHtml": "<p>Kumkumadi Glow Face Oil (कुंकुमादि ग्लो फेस ऑयल) by Vaidyadeep Ayurveda is a classical Kumkumadi Tailam, prepared as per the Ayurvedic Formulary of India (AFI Part-I). Kumkuma, or saffron, gives this treasured beauty oil its name and has been used in Ayurveda for centuries for clear, glowing skin.</p><p>A few drops a day nourish and hydrate the skin, help even out skin tone, and help reduce the appearance of dark spots, tanning, blemishes and acne marks. The result is softer, smoother skin with a natural, lasting glow.</p><p>Suitable for men and women and for all skin types. For external use only.</p><p><strong>Manufacturer:</strong> Jantayu Panchgavya Research Ayurveda Sushrut Nilayam, Jabalpur<br/><strong>Shelf Life:</strong> 24 months from manufacturing<br/><strong>Form:</strong> Oil<br/><strong>SKU:</strong> VD-KUM-030</p>",
+      "vendor": "Vaidyadeep Ayurveda",
+      "productType": "Face Oil",
+      "sku": "VD-KUM-030",
+      "tags": [
+        "best-seller",
+        "ayush-approved",
+        "skin-hair",
+        "kumkumadi",
+        "saffron",
+        "face-oil",
+        "vaidyadeep",
+        "skin-health"
+      ],
+      "price": 1199,
+      "compareAtPrice": 1599,
+      "available": true,
+      "inventoryQuantity": 50,
+      "imageUrls": [
+        "https://hpyjwbmpmfcrsxxxfblm.supabase.co/storage/v1/object/public/media/products/4.png",
+        "https://hpyjwbmpmfcrsxxxfblm.supabase.co/storage/v1/object/public/media/products/6.png",
+        "https://hpyjwbmpmfcrsxxxfblm.supabase.co/storage/v1/object/public/media/products/5.png",
+        "https://hpyjwbmpmfcrsxxxfblm.supabase.co/storage/v1/object/public/media/products/9.png",
+        "https://hpyjwbmpmfcrsxxxfblm.supabase.co/storage/v1/object/public/media/products/8.png",
+        "https://hpyjwbmpmfcrsxxxfblm.supabase.co/storage/v1/object/public/media/products/7.png"
+      ],
+      "collections": ["all-products", "skin-hair"],
+      "sourceUrl": "https://vaidyadeepayurveda.com/products/kumkumadi-glow-face-oil"
+    }
+  ]
+}

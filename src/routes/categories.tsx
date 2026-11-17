@@ -79,7 +79,9 @@ function CategoriesPage() {
         const results = await Promise.all(
           MOBILE_CATEGORY_SECTIONS.map(async (row) => {
             try {
-              const products = await fetchCatalogProducts(row.products, 50);
+              const products = await fetchCatalogProducts(row.products, 50, {
+                fallbackToStore: row.handle === "customer-favourites",
+              });
               return {
                 category: {
                   label: row.label,

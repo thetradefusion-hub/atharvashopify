@@ -13,7 +13,7 @@ import {
   Users,
   MapPin,
   Calendar,
-  Sparkles,
+  Flower2,
   Droplet,
   Pill,
   FlaskConical,
@@ -41,7 +41,7 @@ const productCategories = [
     desc: "Topicals designed for massage, daily comfort, and post-activity routines.",
   },
   {
-    icon: Sparkles,
+    icon: Flower2,
     label: "Ayurvedic beauty",
     desc: "Herbal skincare aligned with gentle, botanical self-care.",
   },

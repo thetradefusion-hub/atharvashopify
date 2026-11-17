@@ -1,5 +1,5 @@
 import { ScrollReveal } from "@/components/ScrollReveal";
-import { Leaf, Droplets, Sparkles } from "lucide-react";
+import { Leaf, Droplets, BadgeCheck } from "lucide-react";
 
 const highlights = [
   {
@@ -13,7 +13,7 @@ const highlights = [
     body: "Massage oils and roll-ons designed for everyday comfort, warm-up routines, and post-activity wind-down.",
   },
   {
-    icon: Sparkles,
+    icon: BadgeCheck,
     title: "Transparent labels",
     body: "We encourage you to read directions, batch details, and storage notes on every pack before use.",
   },
@@ -39,7 +39,7 @@ export function IngredientsHighlightSection() {
           {highlights.map((h, i) => (
             <ScrollReveal key={h.title} delay={i * 0.08}>
               <div className="h-full rounded-3xl border border-border/50 bg-card/80 p-6 shadow-card hover:shadow-card-hover transition-shadow">
-                <div className="w-11 h-11 rounded-2xl bg-primary/10 flex items-center justify-center mb-4">
+                <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-primary/15 to-primary/5 border border-primary/15 flex items-center justify-center mb-4">
                   <h.icon className="w-5 h-5 text-primary" strokeWidth={2.2} />
                 </div>
                 <h3 className="font-semibold text-foreground mb-2">{h.title}</h3>

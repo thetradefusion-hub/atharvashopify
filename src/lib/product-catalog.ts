@@ -1,5 +1,9 @@
 import type { ShopifyProduct } from "@/lib/shopify";
-import { fetchShopifyProductByHandle } from "@/lib/shopify";
+import {
+  fetchShopifyProductByHandle,
+  storefrontApiRequest,
+  STOREFRONT_PRODUCTS_QUERY,
+} from "@/lib/shopify";
 
 /** Shopify product handle — include legacy + CSV import variants for lookup resilience. */
 export type ProductHandle = string;
@@ -21,7 +25,56 @@ export type CatalogSection = {
   accent: "primary" | "yellow" | "orange" | "green";
 };
 
+/**
+ * Live catalogue handles on nbabhd-xj (Vaidyadeep seed / import).
+ * Keep DARDGO aliases last so old stores still resolve if those products exist.
+ */
 const H = {
+  keshtune: [
+    "keshtune-ayurvedic-hair-oil",
+    "dardgo-ayurvedic-hair-oil",
+    "dardgo-ayurvedic-hair-oil-for-hair-fall-dandruff-hair-growth-100-natural-non-sticky-15-herb-nour",
+  ],
+  kumkumadi: ["kumkumadi-glow-face-oil"],
+  balbuddhi: ["balbuddhi-swarnaprashan"],
+  shilajit: ["himalayan-shilajit-gold-plus-resin"],
+  // PDF catalogue handles (show once imported / seeded)
+  dermadeepSyrup: ["dermadeep-syrup"],
+  dermadeepOil: ["dermadeep-oil"],
+  deepFungal: ["deep-fungal-capsules"],
+  deepStoneTab: ["deep-stone-tablet"],
+  deepStoneSyr: ["deep-stone-syrup"],
+  deepCardioCap: ["deep-cardio-capsules"],
+  deepCardioSyr: ["deep-cardio-syrup"],
+  deepSwans: ["deep-swans-capsules"],
+  deepCough: ["deep-cough-syrup"],
+  deepThyroid: ["deep-thyroid-tablet"],
+  deepImmunity: ["deep-immunity-capsules"],
+  mindProfiters: ["mind-profiters-syrup"],
+  deepHairCap: ["deep-hair-capsules"],
+  arshCap: ["arsh-deep-capsules"],
+  arshSyr: ["arsh-deep-syrup"],
+  arshOint: ["arsh-deep-ointment"],
+  deepSlim: ["deep-slim-capsules"],
+  deepBone: ["deep-bone-tablet"],
+  vednaSyr: ["vedna-mukt-plus-syrup"],
+  vednaGold: ["vedna-mukt-gold-capsules"],
+  vednaCap: ["vedna-mukt-capsules"],
+  vednaOil: ["vedna-mukt-oil"],
+  streeSyr: ["deep-stree-syrup"],
+  streeCap: ["deep-stree-capsules"],
+  pcos: ["deep-pcos-capsules"],
+  deepLax: ["deep-lax"],
+  deepDigest: ["deep-digest-syrup"],
+  livDs: ["deep-liv-ds-capsules"],
+  livSyr: ["deep-liv-syrup"],
+  neuro: ["deep-neuro-capsules"],
+  diabSyr: ["diabetone-ds-syrup"],
+  diabCap: ["diabetone-ds-capsules"],
+  urjasCap: ["urjas-deep-gold-plus-capsules"],
+  urjasOil: ["urjas-deep-oil"],
+  urjasSyr: ["urjas-deep-syrup"],
+  // Legacy DARDGO (ignored if not on store)
   painOil: [
     "dardgo-herbal-pain-relief-massage-oil-supports-muscle-relaxation-care",
     "dardgo-herbal-pain-relief-massage-oil",
@@ -30,76 +83,18 @@ const H = {
     "dardgo-ayurvedic-pain-relief-roll-on-joint-muscle-support-60-ml",
     "dardgo-ayurvedic-pain-relief-roll-on",
   ],
-  sciatica: [
-    "dardgo-ayurvedic-sciatica-tablets-for-joint-comfort-flexibility-60-tablets",
-    "dardgo-ayurvedic-sciatica-tablets",
-  ],
-  skinGlow: [
-    "dardgo-ayurvedic-skin-glow-syrup-natural-blood-purifier-for-healthy-skin-200-ml",
-    "dardgo-ayurvedic-skin-glow-syrup",
-  ],
-  sugarPowder: [
-    "dardgo-ayurvedic-sugar-control-powder-diabetes-care-support-100-natural-formulation-120-gm",
-    "dardgo-ayurvedic-sugar-control-powder",
-  ],
-  goldenPowder: [
-    "dardgo-golden-powder-weight-management-digestion-obesity-control-gastric-problems",
-    "dardgo-golden-powder",
-  ],
-  pilesHalwa: [
-    "dardgo-ayurvedic-piles-fighter-halwa-natural-herbal-remedy-for-hemorrhoid-relief-digestive-welln",
-    "dardgo-ayurvedic-piles-fighter-halwa",
-  ],
-  hairOil: [
-    "dardgo-ayurvedic-hair-oil-for-hair-fall-dandruff-hair-growth-100-natural-non-sticky-15-herb-nour",
-    "dardgo-ayurvedic-hair-oil",
-  ],
-  stoneFree: [
-    "dardgo-ayurvedic-stone-free-tablets-for-kidney-stone-care-urinary-tract-wellness",
-    "dardgo-ayurvedic-stone-free-tablets",
-  ],
-  dissolveBall: [
-    "dardgo-dissolve-boll-tablets-ayurvedic-bone-comfort-detox-support",
-    "dardgo-dissolve-boll-tablets",
-  ],
-  halwa9in1: [
-    "dardgo-immunity-booster-9-in-1-halwa-ayurvedic-herbal-formula-for-wellness-vitality",
-    "dardgo-immunity-booster-9-in-1-halwa",
-  ],
-  extraPowerHalwa: [
-    "dardgo-ayurvedic-extra-power-halwa-natural-energy-vitality-booster",
-    "dardgo-ayurvedic-extra-power-halwa",
-  ],
-  manjan: [
-    "dardgo-ayurvedic-dant-manjan-powder-herbal-tooth-powder-for-healthy-gums-fresh-breath-natural-de",
-    "dardgo-ayurvedic-dant-manjan-powder",
-  ],
-  shampoo: [
-    "onion-hair-fall-control-shampoo-boosts-hair-thickness-reduces-breakage-prevents-hair-loss-adds-s",
-    "onion-hair-fall-control-shampoo",
-  ],
-  itchFree: [
-    "dardgo-anti-itch-free-cream-ayurvedic-relief-for-itching-skin-irritations-30gm",
-    "dardgo-anti-itch-free-cream",
-  ],
-  extraPowerCapsule: [
-    "dardgo-ayurvedic-extra-power-capsules-natural-energy-vitality-booster-herbal-supplement-for-stre",
-  ],
-  damaSwas: [
-    "dardgo-ayurvedic-dama-swas-halwa-natural-respiratory-wellness-lung-support-herbal-breathing-aid",
-  ],
 } as const;
 
 /** Homepage hero grid + first showcase block */
 export const CUSTOMER_FAVOURITES: CatalogProduct[] = [
-  { label: "Pain Relief Oil", handles: [...H.painOil] },
-  { label: "Roll On", handles: [...H.rollOn] },
-  { label: "Sciatica Tablet", handles: [...H.sciatica] },
-  { label: "Skin Glow", handles: [...H.skinGlow] },
-  { label: "Sugar Control Powder", handles: [...H.sugarPowder] },
-  { label: "Golden Powder", handles: [...H.goldenPowder] },
-  { label: "Piles Fighter Halwa", handles: [...H.pilesHalwa] },
-  { label: "Hair Oil", handles: [...H.hairOil] },
+  { label: "Keshtune Hair Oil", handles: [...H.keshtune] },
+  { label: "Kumkumadi Face Oil", handles: [...H.kumkumadi] },
+  { label: "Balbuddhi Swarnaprashan", handles: [...H.balbuddhi] },
+  { label: "Shilajit Gold Plus", handles: [...H.shilajit] },
+  { label: "Deep Immunity", handles: [...H.deepImmunity] },
+  { label: "Vedna Mukt Oil", handles: [...H.vednaOil] },
+  { label: "Dermadeep Syrup", handles: [...H.dermadeepSyrup] },
+  { label: "Diabetone DS", handles: [...H.diabSyr] },
 ];
 
 export const CATALOG_SECTIONS: CatalogSection[] = [
@@ -112,6 +107,9 @@ export const CATALOG_SECTIONS: CatalogSection[] = [
     collectionHandle: "wellness-oil-balm",
     accent: "primary",
     products: [
+      { label: "Keshtune Hair Oil", handles: [...H.keshtune] },
+      { label: "Vedna Mukt Oil", handles: [...H.vednaOil] },
+      { label: "Dermadeep Oil", handles: [...H.dermadeepOil] },
       { label: "Pain Relief Oil", handles: [...H.painOil] },
       { label: "Roll On", handles: [...H.rollOn] },
     ],
@@ -119,40 +117,49 @@ export const CATALOG_SECTIONS: CatalogSection[] = [
   {
     id: "joint-mobility",
     title: "Joint & Mobility Care",
-    tagline: "Tablet support for joint comfort and mobility routines.",
+    tagline: "Tablet and oil support for joint comfort and mobility routines.",
     emoji: "🦴",
     desc: "Joint & bone care",
     collectionHandle: "joint-mobility",
     accent: "yellow",
     products: [
-      { label: "Sciatica Tablet", handles: [...H.sciatica] },
-      { label: "Stone Free Tablet", handles: [...H.stoneFree] },
-      { label: "Dissolve Ball Tablet", handles: [...H.dissolveBall] },
+      { label: "Vedna Mukt Plus Syrup", handles: [...H.vednaSyr] },
+      { label: "Vedna Mukt Gold", handles: [...H.vednaGold] },
+      { label: "Vedna Mukt Capsules", handles: [...H.vednaCap] },
+      { label: "Deep Bone Tablet", handles: [...H.deepBone] },
+      { label: "Vedna Mukt Oil", handles: [...H.vednaOil] },
     ],
   },
   {
     id: "immunity-wellness",
     title: "Immunity & Wellness",
-    tagline: "Traditional halwa formats for vitality and daily balance.",
+    tagline: "Classical formulations for vitality, kids’ immunity, and daily balance.",
     emoji: "🛡️",
-    desc: "Immunity halwa",
+    desc: "Immunity & vitality",
     collectionHandle: "immunity-wellness",
     accent: "green",
     products: [
-      { label: "9 in 1 Halwa", handles: [...H.halwa9in1] },
-      { label: "Energy Halwa", handles: [...H.extraPowerHalwa] },
-      { label: "Extra Power Halwa", handles: [...H.extraPowerHalwa] },
+      { label: "Balbuddhi Swarnaprashan", handles: [...H.balbuddhi] },
+      { label: "Deep Immunity", handles: [...H.deepImmunity] },
+      { label: "Shilajit Gold Plus", handles: [...H.shilajit] },
+      { label: "Mind Profiters", handles: [...H.mindProfiters] },
+      { label: "Urjas Deep Capsules", handles: [...H.urjasCap] },
     ],
   },
   {
     id: "digestive-wellness",
     title: "Digestive Wellness",
-    tagline: "Herbal powders for digestion and metabolic comfort.",
+    tagline: "Herbal support for digestion, gut comfort, and metabolic balance.",
     emoji: "🌿",
     desc: "Digestive care",
     collectionHandle: "digestive-wellness",
     accent: "primary",
-    products: [{ label: "Golden Powder", handles: [...H.goldenPowder] }],
+    products: [
+      { label: "Deep Digest Syrup", handles: [...H.deepDigest] },
+      { label: "Deep-Lax", handles: [...H.deepLax] },
+      { label: "Deep Liv DS", handles: [...H.livDs] },
+      { label: "Deep Liv Syrup", handles: [...H.livSyr] },
+    ],
   },
   {
     id: "beauty-personal-care",
@@ -163,26 +170,28 @@ export const CATALOG_SECTIONS: CatalogSection[] = [
     collectionHandle: "beauty-personal-care",
     accent: "orange",
     products: [
-      { label: "Skin Glow", handles: [...H.skinGlow] },
-      { label: "Hair Oil", handles: [...H.hairOil] },
-      { label: "Manjan", handles: [...H.manjan] },
-      { label: "Shampoo", handles: [...H.shampoo] },
-      { label: "Itch Free", handles: [...H.itchFree] },
+      { label: "Kumkumadi Face Oil", handles: [...H.kumkumadi] },
+      { label: "Keshtune Hair Oil", handles: [...H.keshtune] },
+      { label: "Deep Hair Capsules", handles: [...H.deepHairCap] },
+      { label: "Dermadeep Syrup", handles: [...H.dermadeepSyrup] },
+      { label: "Dermadeep Oil", handles: [...H.dermadeepOil] },
     ],
   },
   {
     id: "health-wellness-support",
     title: "Health & Wellness Support",
-    tagline: "Targeted support for sugar balance, digestion, energy, and respiratory comfort.",
+    tagline: "Targeted support for sugar balance, heart, kidney, and respiratory comfort.",
     emoji: "💚",
     desc: "Health support",
     collectionHandle: "health-wellness-support",
     accent: "orange",
     products: [
-      { label: "Sugar Control Powder", handles: [...H.sugarPowder] },
-      { label: "Piles Fighter Halwa", handles: [...H.pilesHalwa] },
-      { label: "Extra Power Capsule", handles: [...H.extraPowerCapsule] },
-      { label: "Dama Swas Halwa", handles: [...H.damaSwas] },
+      { label: "Diabetone DS Syrup", handles: [...H.diabSyr] },
+      { label: "Diabetone DS Capsules", handles: [...H.diabCap] },
+      { label: "Deep Cardio Capsules", handles: [...H.deepCardioCap] },
+      { label: "Deep Stone Tablet", handles: [...H.deepStoneTab] },
+      { label: "Deep Cough Syrup", handles: [...H.deepCough] },
+      { label: "Deep Swans Capsules", handles: [...H.deepSwans] },
     ],
   },
 ];
@@ -240,14 +249,30 @@ async function fetchCatalogProductEntry(item: CatalogProduct): Promise<ShopifyPr
   return null;
 }
 
+/** Fetch any published products from the storefront (fallback when handles miss). */
+export async function fetchAnyStorefrontProducts(first = 12): Promise<ShopifyProduct[]> {
+  const data = await storefrontApiRequest(STOREFRONT_PRODUCTS_QUERY, {
+    first,
+    query: null,
+    sortKey: "BEST_SELLING",
+    reverse: false,
+  });
+  const edges = data?.data?.products?.edges as Array<{ node: ShopifyProduct["node"] }> | undefined;
+  if (!edges?.length) return [];
+  return edges.map((e) => ({ node: e.node }));
+}
+
 /** Fetch products and preserve catalog order (one card per catalog product entry). */
 export async function fetchCatalogProducts(
   catalogProducts: CatalogProduct[],
   maxTotal = 24,
+  options?: { fallbackToStore?: boolean },
 ): Promise<ShopifyProduct[]> {
   const slice = catalogProducts.slice(0, maxTotal);
   const results = await Promise.all(slice.map((item) => fetchCatalogProductEntry(item)));
-  return results.filter((p): p is ShopifyProduct => p !== null);
+  const found = results.filter((p): p is ShopifyProduct => p !== null);
+  if (found.length > 0 || options?.fallbackToStore === false) return found;
+  return fetchAnyStorefrontProducts(maxTotal);
 }
 
 /** Fetch many handles in order (for collection pages). */

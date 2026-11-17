@@ -13,6 +13,10 @@ import {
   initiateShiprocketCartFromItems,
   isShiprocketCheckoutConfigured,
 } from "@/lib/shiprocket-checkout";
+import {
+  initiateRazorpayMagicCheckout,
+  isRazorpayMagicCheckoutConfigured,
+} from "@/lib/razorpay-magic-checkout";
 import { toast } from "sonner";
 import { trackMetaInitiateCheckout } from "@/lib/meta-pixel";
 
@@ -28,9 +32,26 @@ export const Route = createFileRoute("/checkout")({
   }),
 });
 
+function checkoutModeLabel(): string {
+  if (isRazorpayMagicCheckoutConfigured()) return "Opening Razorpay Magic Checkout";
+  if (isShiprocketCheckoutConfigured()) return "Opening Shiprocket checkout";
+  return "Redirecting to checkout";
+}
+
+function checkoutModeHint(): string {
+  if (isRazorpayMagicCheckoutConfigured()) {
+    return "You’ll complete payment in Razorpay Magic Checkout — orders sync to Shopify.";
+  }
+  if (isShiprocketCheckoutConfigured()) {
+    return "You’ll be taken to our secure Shiprocket checkout — same flow as on our Shopify storefront.";
+  }
+  return "Please wait while we redirect you to our secure payment gateway…";
+}
+
 function CheckoutPage() {
   const items = useCartStore((s) => s.items);
   const getCheckoutUrl = useCartStore((s) => s.getCheckoutUrl);
+  const clearCart = useCartStore((s) => s.clearCart);
   const itemKey = items.map((i) => `${i.variantId}:${i.quantity}`).join("|");
   const checkoutCoupon = useRouterState({
     select: (s) => {
@@ -78,16 +99,52 @@ function CheckoutPage() {
       const store = useCartStore.getState();
       const latestItems = store.items;
       const shopifyUrl = store.getCheckoutUrl();
+      const cartId = store.cartId;
+
+      const checkoutValue = latestItems.reduce(
+        (sum, i) => sum + parseFloat(i.price.amount) * i.quantity,
+        0,
+      );
+
+      if (isRazorpayMagicCheckoutConfigured()) {
+        if (latestItems.length === 0 || !cartId) {
+          if (!cancelled) setPhase("empty");
+          return;
+        }
+        trackMetaInitiateCheckout(latestItems, checkoutValue);
+        try {
+          await initiateRazorpayMagicCheckout({
+            cartId,
+            items: latestItems,
+            couponCode: checkoutCoupon || undefined,
+            onDismiss: () => {
+              if (!cancelled) {
+                setErrorMsg("Checkout closed before payment completed.");
+                setPhase("error");
+              }
+            },
+          });
+          if (!cancelled) clearCart();
+        } catch (e) {
+          if (cancelled) return;
+          const msg = e instanceof Error ? e.message : "Checkout could not start.";
+          if (msg.includes("closed before payment")) {
+            setErrorMsg(msg);
+            setPhase("error");
+            return;
+          }
+          setErrorMsg(msg);
+          setPhase("error");
+          toast.error(msg);
+        }
+        return;
+      }
 
       if (isShiprocketCheckoutConfigured()) {
         if (latestItems.length === 0) {
           if (!cancelled) setPhase("empty");
           return;
         }
-        const checkoutValue = latestItems.reduce(
-          (sum, i) => sum + parseFloat(i.price.amount) * i.quantity,
-          0,
-        );
         trackMetaInitiateCheckout(latestItems, checkoutValue);
         try {
           await initiateShiprocketCartFromItems(latestItems, {
@@ -104,10 +161,6 @@ function CheckoutPage() {
       }
 
       if (shopifyUrl) {
-        const checkoutValue = latestItems.reduce(
-          (sum, i) => sum + parseFloat(i.price.amount) * i.quantity,
-          0,
-        );
         trackMetaInitiateCheckout(latestItems, checkoutValue);
         window.location.assign(shopifyUrl);
         return;
@@ -119,7 +172,7 @@ function CheckoutPage() {
     return () => {
       cancelled = true;
     };
-  }, [cartHydrated, itemKey, checkoutCoupon]);
+  }, [cartHydrated, itemKey, checkoutCoupon, clearCart]);
 
   const shopifyFallback = () => {
     const url = getCheckoutUrl();
@@ -143,15 +196,9 @@ function CheckoutPage() {
                   <Loader2 className="w-8 h-8 text-primary" />
                 </motion.div>
                 <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-3">
-                  {isShiprocketCheckoutConfigured()
-                    ? "Opening Shiprocket checkout"
-                    : "Redirecting to checkout"}
+                  {checkoutModeLabel()}
                 </h1>
-                <p className="text-muted-foreground text-sm mb-8">
-                  {isShiprocketCheckoutConfigured()
-                    ? "You’ll be taken to our secure Shiprocket checkout — same flow as on our Shopify storefront."
-                    : "Please wait while we redirect you to our secure payment gateway…"}
-                </p>
+                <p className="text-muted-foreground text-sm mb-8">{checkoutModeHint()}</p>
               </>
             )}
 
