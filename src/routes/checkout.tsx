@@ -133,6 +133,15 @@ function CheckoutPage() {
             setPhase("error");
             return;
           }
+          // Magic order API can fail when Razorpay MID ↔ Shopify linking is incomplete.
+          // Keep checkout usable by falling back to Shopify-hosted checkout.
+          if (shopifyUrl) {
+            toast.message("Magic Checkout unavailable", {
+              description: "Continuing with Shopify checkout…",
+            });
+            window.location.assign(shopifyUrl);
+            return;
+          }
           setErrorMsg(msg);
           setPhase("error");
           toast.error(msg);

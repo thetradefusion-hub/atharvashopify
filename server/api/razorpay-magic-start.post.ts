@@ -158,13 +158,30 @@ export default defineEventHandler(async (event) => {
     );
 
     if (!order.ok || !order.data.order_id) {
-      const detail =
+      let detail =
         order.data.error?.description ||
         order.data.message ||
         order.raw.slice(0, 400) ||
         `HTTP ${order.status}`;
+      try {
+        const parsed = JSON.parse(order.raw) as {
+          Description?: string;
+          description?: string;
+          Code?: string;
+        };
+        detail =
+          parsed.Description ||
+          parsed.description ||
+          (parsed.Code ? `${parsed.Code}: ${detail}` : detail);
+      } catch {
+        /* raw already plain text */
+      }
       setResponseStatus(event, 502);
-      return { error: "Failed to create Razorpay order", detail };
+      return {
+        error: "Failed to create Razorpay order",
+        detail,
+        hint: "Confirm Magic Checkout Pro is live on this Shopify store and linked to this Razorpay MID (Dashboard → Magic Checkout → Checkout Setup).",
+      };
     }
 
     setResponseStatus(event, 200);

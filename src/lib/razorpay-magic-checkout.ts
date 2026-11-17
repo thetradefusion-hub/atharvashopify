@@ -155,10 +155,29 @@ async function postJson<T>(url: string, body: unknown): Promise<T> {
     headers: { "Content-Type": "application/json", Accept: "application/json" },
     body: JSON.stringify(body),
   });
-  const data = (await res.json().catch(() => ({}))) as T & { error?: string; detail?: string };
+  const data = (await res.json().catch(() => ({}))) as T & {
+    error?: string;
+    detail?: string | Record<string, unknown>;
+    hint?: string;
+  };
   if (!res.ok) {
-    const msg = data.error || data.detail || `Request failed (${res.status})`;
-    throw new Error(typeof msg === "string" ? msg : "Razorpay Magic Checkout request failed");
+    const detail =
+      typeof data.detail === "string"
+        ? data.detail
+        : data.detail
+          ? JSON.stringify(data.detail)
+          : "";
+    let detailMsg = detail;
+    try {
+      const parsed = JSON.parse(detail) as { Description?: string; description?: string };
+      detailMsg = parsed.Description || parsed.description || detail;
+    } catch {
+      /* plain text detail */
+    }
+    const msg =
+      [data.error, detailMsg, data.hint].filter(Boolean).join(" — ") ||
+      `Request failed (${res.status})`;
+    throw new Error(msg);
   }
   return data;
 }
